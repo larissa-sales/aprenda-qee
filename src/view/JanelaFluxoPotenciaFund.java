@@ -10,19 +10,19 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class FluxoPotenciaFund {
+public class JanelaFluxoPotenciaFund {
 
-	private JFrame frame;
+	private JFrame frmAprenderQee;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void NewScreen() {
+	public void NewScreen() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FluxoPotenciaFund window = new FluxoPotenciaFund();
-					window.frame.setVisible(true);
+					JanelaFluxoPotenciaFund window = new JanelaFluxoPotenciaFund();
+					window.frmAprenderQee.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -33,7 +33,7 @@ public class FluxoPotenciaFund {
 	/**
 	 * Create the application.
 	 */
-	public FluxoPotenciaFund() {
+	public JanelaFluxoPotenciaFund() {
 		initialize();
 	}
 
@@ -41,23 +41,24 @@ public class FluxoPotenciaFund {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmAprenderQee = new JFrame();
+		frmAprenderQee.setTitle("Aprender QEE");
+		frmAprenderQee.setBounds(100, 100, 800, 600);
+		frmAprenderQee.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmAprenderQee.getContentPane().setLayout(null);
 		
 		JLabel lblFluxoPotFund = new JLabel("Fluxo de Potência Fundamental");
 		lblFluxoPotFund.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFluxoPotFund.setBounds(80, 30, 290, 20);
-		frame.getContentPane().add(lblFluxoPotFund);
+		frmAprenderQee.getContentPane().add(lblFluxoPotFund);
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {						
-				frame.setVisible(false);				
+				frmAprenderQee.dispose();				
 			}
 		});
 		btnVoltar.setBounds(303, 225, 117, 25);
-		frame.getContentPane().add(btnVoltar);
+		frmAprenderQee.getContentPane().add(btnVoltar);
 	}
 }
