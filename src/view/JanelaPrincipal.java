@@ -17,33 +17,18 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Principal extends JFrame {
+public class JanelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Principal frame = new Principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public Principal() {
+	public JanelaPrincipal() {
 		setTitle("Aprenda QEE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 800, 600);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		setContentPane(contentPane);
@@ -52,7 +37,7 @@ public class Principal extends JFrame {
 		JButton btnPotenciaFundamental = new JButton("Fluxo de Potência Fundamental");
 		btnPotenciaFundamental.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FluxoPotenciaFund test = new FluxoPotenciaFund();
+				JanelaFluxoPotenciaFund test = new JanelaFluxoPotenciaFund();
 				test.NewScreen();
 			}
 		});
@@ -62,7 +47,7 @@ public class Principal extends JFrame {
 		JButton btnDistorcaoHarmonica = new JButton("Distorção Harmônica");
 		btnDistorcaoHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DistorcaoHarmonica test = new DistorcaoHarmonica();
+				JanelaDistorcaoHarmonica test = new JanelaDistorcaoHarmonica();
 				test.NewScreen();
 			}
 		});
@@ -72,7 +57,7 @@ public class Principal extends JFrame {
 		JButton btnPotenciaHarmonica = new JButton("Fluxo de Potência Harmônica");
 		btnPotenciaHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FluxoPotenciaHarmonico test = new FluxoPotenciaHarmonico();
+				JanelaFluxoPotenciaHarmonico test = new JanelaFluxoPotenciaHarmonico();
 				test.NewScreen();
 			}
 		});
@@ -86,5 +71,5 @@ public class Principal extends JFrame {
 		
 	}
 	
-	
+
 }
