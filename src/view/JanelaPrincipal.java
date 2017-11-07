@@ -16,6 +16,15 @@ import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.BoxLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.FlowLayout;
+import java.awt.Component;
+import net.miginfocom.swing.MigLayout;
+import java.awt.Font;
+import java.awt.Frame;
 
 public class JanelaPrincipal extends JFrame {
 
@@ -27,47 +36,49 @@ public class JanelaPrincipal extends JFrame {
 	public JanelaPrincipal() {
 		setTitle("Aprenda QEE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
+		setSize(800, 600);
+		setLocationRelativeTo(null);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnPotenciaFundamental = new JButton("Fluxo de Potência Fundamental");
-		btnPotenciaFundamental.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JanelaFluxoPotenciaFund test = new JanelaFluxoPotenciaFund();
-				test.NewScreen();
-			}
-		});
-		btnPotenciaFundamental.setBounds(90, 88, 270, 25);
-		contentPane.add(btnPotenciaFundamental);
+		JLabel lblEscolhaUmaSimulao = new JLabel("Escolha uma simula\u00E7\u00E3o:");
+		lblEscolhaUmaSimulao.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblEscolhaUmaSimulao.setBounds(292, 50, 200, 14);
+		lblEscolhaUmaSimulao.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(lblEscolhaUmaSimulao);
 		
-		JButton btnDistorcaoHarmonica = new JButton("Distorção Harmônica");
+		JButton btnDistorcaoHarmonica = new JButton("Distor\u00E7\u00E3o Harm\u00F4nica");
+		btnDistorcaoHarmonica.setBounds(277, 189, 230, 25);
 		btnDistorcaoHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JanelaDistorcaoHarmonica test = new JanelaDistorcaoHarmonica();
 				test.NewScreen();
 			}
 		});
-		btnDistorcaoHarmonica.setBounds(90, 128, 270, 25);
+		
+		JButton btnPotenciaFundamental = new JButton("Fluxo de Pot\u00EAncia Fundamental");
+		btnPotenciaFundamental.setBounds(277, 114, 230, 25);
+		btnPotenciaFundamental.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JanelaFluxoPotenciaFund test = new JanelaFluxoPotenciaFund();
+				test.NewScreen();
+			}
+		});
+		contentPane.add(btnPotenciaFundamental);
 		contentPane.add(btnDistorcaoHarmonica);
 		
-		JButton btnPotenciaHarmonica = new JButton("Fluxo de Potência Harmônica");
+		JButton btnPotenciaHarmonica = new JButton("Fluxo de Pot\u00EAncia Harm\u00F4nica");
+		btnPotenciaHarmonica.setBounds(277, 264, 230, 25);
 		btnPotenciaHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JanelaFluxoPotenciaHarmonico test = new JanelaFluxoPotenciaHarmonico();
 				test.NewScreen();
 			}
 		});
-		btnPotenciaHarmonica.setBounds(90, 168, 270, 25);
 		contentPane.add(btnPotenciaHarmonica);
-		
-		JLabel lblEscolhaUmaSimulao = new JLabel("Escolha uma simulação");
-		lblEscolhaUmaSimulao.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEscolhaUmaSimulao.setBounds(90, 48, 270, 25);
-		contentPane.add(lblEscolhaUmaSimulao);
 		
 	}
 	

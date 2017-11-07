@@ -8,10 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class JanelaDistorcaoHarmonica {
 
-	private JFrame frmAprenderQee;
+	private JFrame frmAprendaQEE;
 
 	/**
 	 * Launch the application.
@@ -21,7 +22,7 @@ public class JanelaDistorcaoHarmonica {
 			public void run() {
 				try {
 					JanelaDistorcaoHarmonica window = new JanelaDistorcaoHarmonica();
-					window.frmAprenderQee.setVisible(true);
+					window.frmAprendaQEE.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -40,24 +41,26 @@ public class JanelaDistorcaoHarmonica {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmAprenderQee = new JFrame();
-		frmAprenderQee.setTitle("Aprender QEE");
-		frmAprenderQee.setBounds(100, 100, 800, 600);
-		frmAprenderQee.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frmAprenderQee.getContentPane().setLayout(null);
+		frmAprendaQEE = new JFrame();
+		frmAprendaQEE.setTitle("Aprenda QEE");
+		frmAprendaQEE.setSize(800, 600);
+		frmAprendaQEE.setLocationRelativeTo(null);
+		frmAprendaQEE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmAprendaQEE.getContentPane().setLayout(null);
 		
-		JLabel lblDistHarmonica = new JLabel("Distorção Harmônica");
+		JLabel lblDistHarmonica = new JLabel("Distor\u00E7\u00E3o Harm\u00F4nica");
+		lblDistHarmonica.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDistHarmonica.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDistHarmonica.setBounds(80, 30, 290, 20);
-		frmAprenderQee.getContentPane().add(lblDistHarmonica);
+		lblDistHarmonica.setBounds(247, 30, 290, 20);
+		frmAprendaQEE.getContentPane().add(lblDistHarmonica);
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {						
-				frmAprenderQee.dispose();				
+				frmAprendaQEE.dispose();				
 			}
 		});
-		btnVoltar.setBounds(303, 225, 117, 25);
-		frmAprenderQee.getContentPane().add(btnVoltar);
+		btnVoltar.setBounds(650, 500, 90, 25);
+		frmAprendaQEE.getContentPane().add(btnVoltar);
 	}
 }
