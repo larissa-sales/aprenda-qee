@@ -36,7 +36,7 @@ public class JanelaPrincipal extends JFrame {
 	public JanelaPrincipal() {
 		setTitle("Aprenda QEE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 600);
+		setSize(500, 400);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		contentPane = new JPanel();
@@ -45,37 +45,37 @@ public class JanelaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblEscolhaUmaSimulao = new JLabel("Escolha uma simula\u00E7\u00E3o:");
-		lblEscolhaUmaSimulao.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblEscolhaUmaSimulao.setBounds(292, 50, 200, 14);
+		lblEscolhaUmaSimulao.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblEscolhaUmaSimulao.setBounds(97, 52, 290, 25);
 		lblEscolhaUmaSimulao.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblEscolhaUmaSimulao);
 		
 		JButton btnDistorcaoHarmonica = new JButton("Distor\u00E7\u00E3o Harm\u00F4nica");
-		btnDistorcaoHarmonica.setBounds(277, 189, 230, 25);
+		btnDistorcaoHarmonica.setBounds(127, 206, 230, 25);
 		btnDistorcaoHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JanelaDistorcaoHarmonica test = new JanelaDistorcaoHarmonica();
-				test.NewScreen();
+				JanelaDistorcaoHarm janela = new JanelaDistorcaoHarm();
+				janela.NewScreen();
 			}
 		});
 		
 		JButton btnPotenciaFundamental = new JButton("Fluxo de Pot\u00EAncia Fundamental");
-		btnPotenciaFundamental.setBounds(277, 114, 230, 25);
+		btnPotenciaFundamental.setBounds(127, 129, 230, 25);
 		btnPotenciaFundamental.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JanelaFluxoPotenciaFund test = new JanelaFluxoPotenciaFund();
-				test.NewScreen();
+				JanelaFluxoPotenciaFund janela = new JanelaFluxoPotenciaFund();
+				janela.NewScreen();
 			}
 		});
 		contentPane.add(btnPotenciaFundamental);
 		contentPane.add(btnDistorcaoHarmonica);
 		
 		JButton btnPotenciaHarmonica = new JButton("Fluxo de Pot\u00EAncia Harm\u00F4nica");
-		btnPotenciaHarmonica.setBounds(277, 264, 230, 25);
+		btnPotenciaHarmonica.setBounds(127, 283, 230, 25);
 		btnPotenciaHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JanelaFluxoPotenciaHarmonico test = new JanelaFluxoPotenciaHarmonico();
-				test.NewScreen();
+				JanelaFluxoPotenciaHarm janela = new JanelaFluxoPotenciaHarm();
+				janela.NewScreen();
 			}
 		});
 		contentPane.add(btnPotenciaHarmonica);

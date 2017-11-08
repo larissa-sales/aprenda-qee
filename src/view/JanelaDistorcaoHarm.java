@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
-public class JanelaDistorcaoHarmonica {
+public class JanelaDistorcaoHarm {
 
 	private JFrame frmAprendaQEE;
 
@@ -21,7 +21,7 @@ public class JanelaDistorcaoHarmonica {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaDistorcaoHarmonica window = new JanelaDistorcaoHarmonica();
+					JanelaDistorcaoHarm window = new JanelaDistorcaoHarm();
 					window.frmAprendaQEE.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class JanelaDistorcaoHarmonica {
 	/**
 	 * Create the application.
 	 */
-	public JanelaDistorcaoHarmonica() {
+	public JanelaDistorcaoHarm() {
 		initialize();
 	}
 

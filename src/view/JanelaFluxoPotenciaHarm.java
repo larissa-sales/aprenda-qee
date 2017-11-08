@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
-public class JanelaFluxoPotenciaHarmonico {
+public class JanelaFluxoPotenciaHarm {
 
 	private JFrame frmAprendaQEE;
 
@@ -21,7 +21,7 @@ public class JanelaFluxoPotenciaHarmonico {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaFluxoPotenciaHarmonico window = new JanelaFluxoPotenciaHarmonico();
+					JanelaFluxoPotenciaHarm window = new JanelaFluxoPotenciaHarm();
 					window.frmAprendaQEE.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class JanelaFluxoPotenciaHarmonico {
 	/**
 	 * Create the application.
 	 */
-	public JanelaFluxoPotenciaHarmonico() {
+	public JanelaFluxoPotenciaHarm() {
 		initialize();
 	}
 
