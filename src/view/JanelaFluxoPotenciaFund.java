@@ -156,6 +156,7 @@ public class JanelaFluxoPotenciaFund {
 		panelBordaGraficoCorrente.add(graficoCorrente);
 		
 		JButton btnSimular = new JButton("Simular");
+		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSimular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -168,7 +169,7 @@ public class JanelaFluxoPotenciaFund {
 				}
 			}
 		});
-		btnSimular.setBounds(56, 301, 89, 23);
+		btnSimular.setBounds(56, 301, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnSimular);
 		
 		JPanel panelBordaGraficoPotInst = new JPanel();
@@ -189,45 +190,50 @@ public class JanelaFluxoPotenciaFund {
 		graficoTensao = new GraphPanel(new ArrayList<>());
 		panelBordaGraficoTensao.add(graficoTensao);
 		
+		JPanel panelDados = new JPanel();
+		panelDados.setBounds(56, 379, 222, 133);
+		frmAprendaQEE.getContentPane().add(panelDados);
+		panelDados.setLayout(null);
+		
 		JLabel lblPotnciaAtiva = new JLabel("Pot\u00EAncia Ativa");
+		lblPotnciaAtiva.setBounds(0, 0, 130, 25);
+		panelDados.add(lblPotnciaAtiva);
 		lblPotnciaAtiva.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPotnciaAtiva.setBounds(56, 379, 130, 25);
-		frmAprendaQEE.getContentPane().add(lblPotnciaAtiva);
 		
 		JLabel lblPotnciaReativa = new JLabel("Pot\u00EAncia Reativa");
+		lblPotnciaReativa.setBounds(0, 36, 130, 25);
+		panelDados.add(lblPotnciaReativa);
 		lblPotnciaReativa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPotnciaReativa.setBounds(56, 415, 130, 25);
-		frmAprendaQEE.getContentPane().add(lblPotnciaReativa);
 		
 		JLabel lblPotnciaAparente = new JLabel("Pot\u00EAncia Aparente");
+		lblPotnciaAparente.setBounds(0, 72, 130, 25);
+		panelDados.add(lblPotnciaAparente);
 		lblPotnciaAparente.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPotnciaAparente.setBounds(56, 451, 130, 25);
-		frmAprendaQEE.getContentPane().add(lblPotnciaAparente);
 		
 		JLabel lblFatorDePotncia = new JLabel("Fator de Pot\u00EAncia");
+		lblFatorDePotncia.setBounds(0, 108, 130, 25);
+		panelDados.add(lblFatorDePotncia);
 		lblFatorDePotncia.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblFatorDePotncia.setBounds(56, 487, 130, 25);
-		frmAprendaQEE.getContentPane().add(lblFatorDePotncia);
 		
 		textPotAt = new JTextField();
-		textPotAt.setBounds(192, 381, 86, 20);
-		frmAprendaQEE.getContentPane().add(textPotAt);
+		textPotAt.setBounds(136, 2, 86, 20);
+		panelDados.add(textPotAt);
 		textPotAt.setColumns(10);
 		
 		textPotRt = new JTextField();
+		textPotRt.setBounds(136, 40, 86, 20);
+		panelDados.add(textPotRt);
 		textPotRt.setText("");
-		textPotRt.setBounds(192, 419, 86, 20);
-		frmAprendaQEE.getContentPane().add(textPotRt);
 		textPotRt.setColumns(10);
 		
 		textPotAp = new JTextField();
-		textPotAp.setBounds(192, 456, 86, 20);
-		frmAprendaQEE.getContentPane().add(textPotAp);
+		textPotAp.setBounds(136, 77, 86, 20);
+		panelDados.add(textPotAp);
 		textPotAp.setColumns(10);
 		
 		textFatorPot = new JTextField();
-		textFatorPot.setBounds(192, 491, 86, 20);
-		frmAprendaQEE.getContentPane().add(textFatorPot);
+		textFatorPot.setBounds(136, 112, 86, 20);
+		panelDados.add(textFatorPot);
 		textFatorPot.setColumns(10);
 	}
 }
