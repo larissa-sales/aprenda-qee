@@ -33,6 +33,10 @@ public class JanelaFluxoPotenciaFund {
 	private GraphPanel graficoCorrente;
 	private GraphPanel graficoPotInst;
 	private CalculosUC2 calculosUC2;
+	private JTextField textPotAt;
+	private JTextField textPotRt;
+	private JTextField textPotAp;
+	private JTextField textFatorPot;
 
 	/**
 	 * Launch the application.
@@ -62,15 +66,16 @@ public class JanelaFluxoPotenciaFund {
 	 */
 	private void initialize() {
 		frmAprendaQEE = new JFrame();
+		frmAprendaQEE.setResizable(false);
 		frmAprendaQEE.setTitle("Aprenda QEE");
-		frmAprendaQEE.setSize(1024, 768);
+		frmAprendaQEE.setSize(1024, 700);
 		frmAprendaQEE.setLocationRelativeTo(null);
 		frmAprendaQEE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		calculosUC2 = new CalculosUC2();
 		
 		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setBounds(880, 670, 90, 25);
+		btnVoltar.setBounds(880, 600, 90, 25);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {						
 				frmAprendaQEE.dispose();			
@@ -79,8 +84,8 @@ public class JanelaFluxoPotenciaFund {
 		frmAprendaQEE.getContentPane().setLayout(null);
 		
 		JLabel lblFluxoPotFund = new JLabel("Fluxo de Pot\u00EAncia Fundamental");
-		lblFluxoPotFund.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblFluxoPotFund.setBounds(363, 50, 281, 32);
+		lblFluxoPotFund.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblFluxoPotFund.setBounds(344, 50, 320, 32);
 		lblFluxoPotFund.setHorizontalAlignment(SwingConstants.CENTER);
 		frmAprendaQEE.getContentPane().add(lblFluxoPotFund);
 		frmAprendaQEE.getContentPane().add(btnVoltar);
@@ -92,7 +97,7 @@ public class JanelaFluxoPotenciaFund {
 		panelTensao.setLayout(null);
 		
 		JLabel lblAmpV = new JLabel("Amplitude");
-		lblAmpV.setBounds(6, 16, 70, 25);
+		lblAmpV.setBounds(6, 17, 70, 25);
 		panelTensao.add(lblAmpV);
 		lblAmpV.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
@@ -103,12 +108,12 @@ public class JanelaFluxoPotenciaFund {
 		
 		textAmpV = new JTextField();
 		textAmpV.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textAmpV.setBounds(97, 18, 86, 20);
+		textAmpV.setBounds(97, 18, 86, 22);
 		panelTensao.add(textAmpV);
 		textAmpV.setColumns(10);
 		
 		textAngV = new JTextField();
-		textAngV.setBounds(97, 56, 86, 20);
+		textAngV.setBounds(97, 53, 86, 22);
 		panelTensao.add(textAngV);
 		textAngV.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAngV.setColumns(10);
@@ -121,7 +126,7 @@ public class JanelaFluxoPotenciaFund {
 		
 		JLabel lblAmpI = new JLabel("Amplitude");
 		lblAmpI.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblAmpI.setBounds(6, 16, 70, 25);
+		lblAmpI.setBounds(6, 17, 70, 25);
 		panelCorrente.add(lblAmpI);
 		
 		JLabel lblAngI = new JLabel("\u00C2ngulo");
@@ -132,27 +137,18 @@ public class JanelaFluxoPotenciaFund {
 		textAmpI = new JTextField();
 		textAmpI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAmpI.setColumns(10);
-		textAmpI.setBounds(97, 18, 86, 20);
+		textAmpI.setBounds(97, 18, 86, 22);
 		panelCorrente.add(textAmpI);
 		
 		textAngI = new JTextField();
 		textAngI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAngI.setColumns(10);
-		textAngI.setBounds(97, 56, 86, 20);
+		textAngI.setBounds(97, 54, 86, 22);
 		panelCorrente.add(textAngI);
-		
-		JPanel panelBordaGraficoTensao = new JPanel();
-		panelBordaGraficoTensao.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Tens\u00E3o (V)", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelBordaGraficoTensao.setBounds(303, 108, 320, 182);
-		frmAprendaQEE.getContentPane().add(panelBordaGraficoTensao);
-		panelBordaGraficoTensao.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		graficoTensao = new GraphPanel(new ArrayList<>());
-		panelBordaGraficoTensao.add(graficoTensao);
 		
 		JPanel panelBordaGraficoCorrente = new JPanel();
 		panelBordaGraficoCorrente.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Corrente (I)", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelBordaGraficoCorrente.setBounds(650, 108, 320, 182);
+		panelBordaGraficoCorrente.setBounds(609, 108, 344, 182);
 		frmAprendaQEE.getContentPane().add(panelBordaGraficoCorrente);
 		panelBordaGraficoCorrente.setLayout(new GridLayout(1, 0, 0, 0));
 		
@@ -175,13 +171,63 @@ public class JanelaFluxoPotenciaFund {
 		btnSimular.setBounds(56, 301, 89, 23);
 		frmAprendaQEE.getContentPane().add(btnSimular);
 		
-		JPanel panelGraficoPotInst = new JPanel();
-		panelGraficoPotInst.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Potência Instantânea", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelGraficoPotInst.setBounds(303, 328, 320, 182);
-		frmAprendaQEE.getContentPane().add(panelGraficoPotInst);
-		panelGraficoPotInst.setLayout(new GridLayout(1, 0, 0, 0));
+		JPanel panelBordaGraficoPotInst = new JPanel();
+		panelBordaGraficoPotInst.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Potência Instantânea", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
+		panelBordaGraficoPotInst.setBounds(313, 337, 344, 203);
+		frmAprendaQEE.getContentPane().add(panelBordaGraficoPotInst);
+		panelBordaGraficoPotInst.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		graficoPotInst = new GraphPanel(new ArrayList<>());
-		panelGraficoPotInst.add(graficoPotInst);
+		panelBordaGraficoPotInst.add(graficoPotInst);
+		
+		JPanel panelBordaGraficoTensao = new JPanel();
+		panelBordaGraficoTensao.setBounds(255, 108, 344, 182);
+		frmAprendaQEE.getContentPane().add(panelBordaGraficoTensao);
+		panelBordaGraficoTensao.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Tens\u00E3o (V)", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
+		panelBordaGraficoTensao.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		graficoTensao = new GraphPanel(new ArrayList<>());
+		panelBordaGraficoTensao.add(graficoTensao);
+		
+		JLabel lblPotnciaAtiva = new JLabel("Pot\u00EAncia Ativa");
+		lblPotnciaAtiva.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPotnciaAtiva.setBounds(56, 379, 130, 25);
+		frmAprendaQEE.getContentPane().add(lblPotnciaAtiva);
+		
+		JLabel lblPotnciaReativa = new JLabel("Pot\u00EAncia Reativa");
+		lblPotnciaReativa.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPotnciaReativa.setBounds(56, 415, 130, 25);
+		frmAprendaQEE.getContentPane().add(lblPotnciaReativa);
+		
+		JLabel lblPotnciaAparente = new JLabel("Pot\u00EAncia Aparente");
+		lblPotnciaAparente.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPotnciaAparente.setBounds(56, 451, 130, 25);
+		frmAprendaQEE.getContentPane().add(lblPotnciaAparente);
+		
+		JLabel lblFatorDePotncia = new JLabel("Fator de Pot\u00EAncia");
+		lblFatorDePotncia.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFatorDePotncia.setBounds(56, 487, 130, 25);
+		frmAprendaQEE.getContentPane().add(lblFatorDePotncia);
+		
+		textPotAt = new JTextField();
+		textPotAt.setBounds(192, 381, 86, 20);
+		frmAprendaQEE.getContentPane().add(textPotAt);
+		textPotAt.setColumns(10);
+		
+		textPotRt = new JTextField();
+		textPotRt.setText("");
+		textPotRt.setBounds(192, 419, 86, 20);
+		frmAprendaQEE.getContentPane().add(textPotRt);
+		textPotRt.setColumns(10);
+		
+		textPotAp = new JTextField();
+		textPotAp.setBounds(192, 456, 86, 20);
+		frmAprendaQEE.getContentPane().add(textPotAp);
+		textPotAp.setColumns(10);
+		
+		textFatorPot = new JTextField();
+		textFatorPot.setBounds(192, 491, 86, 20);
+		frmAprendaQEE.getContentPane().add(textFatorPot);
+		textFatorPot.setColumns(10);
 	}
 }

@@ -42,16 +42,17 @@ public class JanelaFluxoPotenciaHarm {
 	 */
 	private void initialize() {
 		frmAprendaQEE = new JFrame();
+		frmAprendaQEE.setResizable(false);
 		frmAprendaQEE.setTitle("Aprenda QEE");
-		frmAprendaQEE.setSize(800, 600);
+		frmAprendaQEE.setSize(1024, 700);
 		frmAprendaQEE.setLocationRelativeTo(null);
 		frmAprendaQEE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmAprendaQEE.getContentPane().setLayout(null);
 		
 		JLabel lblFluxoPotHarmonico = new JLabel("Fluxo de Pot\u00EAncia Harm\u00F4nico");
-		lblFluxoPotHarmonico.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblFluxoPotHarmonico.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblFluxoPotHarmonico.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFluxoPotHarmonico.setBounds(247, 30, 290, 20);
+		lblFluxoPotHarmonico.setBounds(359, 30, 290, 20);
 		frmAprendaQEE.getContentPane().add(lblFluxoPotHarmonico);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -60,7 +61,7 @@ public class JanelaFluxoPotenciaHarm {
 				frmAprendaQEE.dispose();				
 			}
 		});
-		btnVoltar.setBounds(650, 500, 90, 25);
+		btnVoltar.setBounds(880, 600, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnVoltar);
 	}
 }
