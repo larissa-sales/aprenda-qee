@@ -21,6 +21,7 @@ import java.awt.Color;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JTextField;
+import java.util.List;
 
 public class JanelaDistorcaoHarm {
 
@@ -32,9 +33,11 @@ public class JanelaDistorcaoHarm {
 	private GraphPanel graficoHarm5;
 	private GraphPanel graficoHarm6;
 	private GraphPanel graficoFund;
+	private GraphPanel graficoDistRes;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textAmpH1;
 	private JTextField textAngH1;
+	private JTextField textFourier;
 
 	/**
 	 * Launch the application.
@@ -108,7 +111,7 @@ public class JanelaDistorcaoHarm {
 		panelBordaGraficoFund.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Fundamental", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelBordaGraficoFund.setBounds(263, 91, 327, 157);
 		frmAprendaQEE.getContentPane().add(panelBordaGraficoFund);
-		panelBordaGraficoFund.setLayout(null);
+		panelBordaGraficoFund.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		graficoFund = new GraphPanel(new ArrayList<>());
 		graficoFund.setBounds(6, 16, 315, 135);
@@ -137,35 +140,82 @@ public class JanelaDistorcaoHarm {
 			}
 		});
 		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnSimular.setBounds(38, 238, 90, 25);
+		btnSimular.setBounds(38, 423, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnSimular);
 		
-		JPanel panel = new JPanel();
-		panel.setLayout(null);
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nico 1", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(38, 304, 189, 88);
-		frmAprendaQEE.getContentPane().add(panel);
+		JPanel panelH1 = new JPanel();
+		panelH1.setLayout(null);
+		panelH1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nico 1", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
+		panelH1.setBounds(38, 269, 189, 121);
+		frmAprendaQEE.getContentPane().add(panelH1);
 		
-		JLabel label = new JLabel("Amplitude");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label.setBounds(6, 17, 70, 25);
-		panel.add(label);
+		JLabel labelAmpH1 = new JLabel("Amplitude");
+		labelAmpH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		labelAmpH1.setBounds(6, 17, 70, 25);
+		panelH1.add(labelAmpH1);
 		
-		JLabel label_1 = new JLabel("\u00C2ngulo");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label_1.setBounds(6, 52, 70, 25);
-		panel.add(label_1);
+		JLabel labelAngH1 = new JLabel("\u00C2ngulo");
+		labelAngH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		labelAngH1.setBounds(6, 52, 70, 25);
+		panelH1.add(labelAngH1);
 		
 		textAmpH1 = new JTextField();
 		textAmpH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAmpH1.setColumns(10);
 		textAmpH1.setBounds(97, 18, 86, 22);
-		panel.add(textAmpH1);
+		panelH1.add(textAmpH1);
 		
 		textAngH1 = new JTextField();
 		textAngH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAngH1.setColumns(10);
 		textAngH1.setBounds(97, 53, 86, 22);
-		panel.add(textAngH1);
+		panelH1.add(textAngH1);
+		
+		JLabel lblOrdemH1 = new JLabel("Ordem Harm\u00F4nica");
+		lblOrdemH1.setBounds(6, 88, 130, 25);
+		panelH1.add(lblOrdemH1);
+		lblOrdemH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JSpinner spinnerOrdemHarm = new JSpinner();
+		spinnerOrdemHarm.setBounds(126, 85, 57, 25);
+		panelH1.add(spinnerOrdemHarm);
+		spinnerOrdemHarm.setModel(new SpinnerNumberModel(0, 0, 6, 1));
+		spinnerOrdemHarm.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JPanel panelOndaH1 = new JPanel();
+		panelOndaH1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Harmônico 1", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
+		panelOndaH1.setBounds(263, 269, 327, 157);
+		frmAprendaQEE.getContentPane().add(panelOndaH1);
+		panelOndaH1.setLayout(new GridLayout(0, 1, 0, 0));
+				
+		graficoHarm1 = new GraphPanel(new ArrayList<>());
+		graficoHarm1.setBounds(10, 21, 323, 125);
+		panelOndaH1.add(graficoHarm1);
+		
+		JPanel panelDistRes = new JPanel();
+		panelDistRes.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Distorcida Resultante", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
+		panelDistRes.setBounds(51, 482, 327, 157);
+		frmAprendaQEE.getContentPane().add(panelDistRes);
+		panelDistRes.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		graficoDistRes = new GraphPanel(new ArrayList<>());
+		panelDistRes.add(graficoDistRes);
+		
+		JPanel panelFourier = new JPanel();
+		panelFourier.setBounds(492, 537, 300, 47);
+		frmAprendaQEE.getContentPane().add(panelFourier);
+		panelFourier.setLayout(null);
+		
+		JLabel lblFourier = new JLabel("Fourier");
+		lblFourier.setBounds(0, 0, 70, 25);
+		panelFourier.add(lblFourier);
+		lblFourier.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		textFourier = new JTextField();
+		textFourier.setBounds(0, 25, 300, 22);
+		panelFourier.add(textFourier);
+		textFourier.setEditable(false);
+		textFourier.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textFourier.setColumns(10);
 	}
 }
