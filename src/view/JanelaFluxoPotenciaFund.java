@@ -164,9 +164,21 @@ public class JanelaFluxoPotenciaFund {
 					calculosUC2.setAngV(Double.parseDouble(textAngV.getText()));
 					calculosUC2.setAmpI(Double.parseDouble(textAmpI.getText()));
 					calculosUC2.setAngI(Double.parseDouble(textAngI.getText()));
-				}catch(IllegalArgumentException e) {
+					calculosUC2.calcular();
+					textPotAt.setText(String.format("%.2f", calculosUC2.getPotAtiva()));
+					textPotRt.setText(String.format("%.2f", calculosUC2.getPotReativa()));
+					textPotAp.setText(String.format("%.2f", calculosUC2.getPotAparente()));
+					textFatorPot.setText(String.format("%.2f", calculosUC2.getFatorPot()));
+				}catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+				catch(IllegalArgumentException e) {
 					JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 				}
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		});
 		btnSimular.setBounds(56, 301, 90, 25);
@@ -177,37 +189,37 @@ public class JanelaFluxoPotenciaFund {
 		frmAprendaQEE.getContentPane().add(panelDados);
 		panelDados.setLayout(null);
 		
-		JLabel lblPotnciaAtiva = new JLabel("Pot\u00EAncia Ativa");
-		lblPotnciaAtiva.setBounds(0, 0, 130, 25);
-		panelDados.add(lblPotnciaAtiva);
-		lblPotnciaAtiva.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JLabel lblPotAtiva = new JLabel("Pot\u00EAncia Ativa");
+		lblPotAtiva.setBounds(0, 0, 130, 25);
+		panelDados.add(lblPotAtiva);
+		lblPotAtiva.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lblWatt = new JLabel("Watt");
 		lblWatt.setBounds(226, 1, 46, 22);
 		panelDados.add(lblWatt);
 		
-		JLabel lblPotnciaReativa = new JLabel("Pot\u00EAncia Reativa");
-		lblPotnciaReativa.setBounds(0, 36, 130, 25);
-		panelDados.add(lblPotnciaReativa);
-		lblPotnciaReativa.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JLabel lblPotReativa = new JLabel("Pot\u00EAncia Reativa");
+		lblPotReativa.setBounds(0, 36, 130, 25);
+		panelDados.add(lblPotReativa);
+		lblPotReativa.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lblVar = new JLabel("VAR");
 		lblVar.setBounds(226, 39, 38, 22);
 		panelDados.add(lblVar);
 		
-		JLabel lblPotnciaAparente = new JLabel("Pot\u00EAncia Aparente");
-		lblPotnciaAparente.setBounds(0, 72, 130, 25);
-		panelDados.add(lblPotnciaAparente);
-		lblPotnciaAparente.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JLabel lblPotAparente = new JLabel("Pot\u00EAncia Aparente");
+		lblPotAparente.setBounds(0, 72, 130, 25);
+		panelDados.add(lblPotAparente);
+		lblPotAparente.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lblVa = new JLabel("VA");
 		lblVa.setBounds(226, 76, 38, 22);
 		panelDados.add(lblVa);
 		
-		JLabel lblFatorDePotncia = new JLabel("Fator de Pot\u00EAncia");
-		lblFatorDePotncia.setBounds(0, 108, 130, 25);
-		panelDados.add(lblFatorDePotncia);
-		lblFatorDePotncia.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JLabel lblFatorPot = new JLabel("Fator de Pot\u00EAncia");
+		lblFatorPot.setBounds(0, 108, 130, 25);
+		panelDados.add(lblFatorPot);
+		lblFatorPot.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		textPotAt = new JTextField();
 		textPotAt.setEditable(false);
