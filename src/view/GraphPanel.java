@@ -22,8 +22,8 @@ import javax.swing.JPanel;
  */
 public class GraphPanel extends JPanel {
 
-    private int padding = 25;
-    private int labelPadding = 25;
+    private int padding = 20;
+    private int labelPadding = 20;
     private Color lineColor = new Color(44, 102, 230, 180);
     private Color pointColor = new Color(100, 100, 100, 180);
     private Color gridColor = new Color(200, 200, 200, 200);
@@ -111,14 +111,7 @@ public class GraphPanel extends JPanel {
         }
 
         g2.setStroke(oldStroke);
-        g2.setColor(pointColor);
-        for (int i = 0; i < graphPoints.size(); i++) {
-            int x = graphPoints.get(i).x - pointWidth / 2;
-            int y = graphPoints.get(i).y - pointWidth / 2;
-            int ovalW = pointWidth;
-            int ovalH = pointWidth;
-            g2.fillOval(x, y, ovalW, ovalH);
-        }
+        
     }
 
     private double getMinScore() {
