@@ -169,6 +169,10 @@ public class JanelaFluxoPotenciaFund {
 					textPotRt.setText(String.format("%.2f", calculosUC2.getPotReativa()));
 					textPotAp.setText(String.format("%.2f", calculosUC2.getPotAparente()));
 					textFatorPot.setText(String.format("%.2f", calculosUC2.getFatorPot()));
+					graficoTensao.setScores(calculosUC2.getFormaOndaTensao());
+					graficoCorrente.setScores(calculosUC2.getFormaOndaCorrente());
+					graficoPotInst.setScores(calculosUC2.getFormaOndaPotInst());
+					
 				}catch(NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
 				}
