@@ -1,6 +1,11 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CalculosUC2 implements Calculo{
+	private final double w = 2*Math.PI*60;
+	
 	private double ampV;
 	private double angV;
 	private double ampI;
@@ -9,7 +14,15 @@ public class CalculosUC2 implements Calculo{
 	private double potReativa;
 	private double potAparente;
 	private double fatorPot;	
+	private List<Double> formaOndaTensao;
+	private List<Double> formaOndaCorrente;
+	private List<Double> formaOndaPotInst;
 	
+	public CalculosUC2() {
+		formaOndaTensao = new ArrayList<>();
+		formaOndaCorrente = new ArrayList<>();
+		formaOndaPotInst = new ArrayList<>();
+	}
 	
 	@Override
 	public void calcular() {
@@ -17,6 +30,9 @@ public class CalculosUC2 implements Calculo{
 		calculaPotAparente();
 		calculaPotReativa();
 		calculaPotAtiva();
+		calculaFormaOndaTensao();
+		calculaFormaOndaCorrente();
+		calculaFormaOndaPotInst();
 	}
 
 
@@ -101,5 +117,40 @@ public class CalculosUC2 implements Calculo{
 
 	private void calculaFatorPot() {
 		fatorPot = Math.cos(Math.toRadians(angV - angI));
+	}
+
+	public List<Double> getFormaOndaTensao() {
+		return formaOndaTensao;
+	}
+
+	public List<Double> getFormaOndaCorrente() {
+		return formaOndaCorrente;
+	}
+
+	public List<Double> getFormaOndaPotInst() {
+		return formaOndaPotInst;
+	}
+	
+	private void calculaFormaOndaTensao() {
+		double x = 0;
+		while (x <= 0.1) {
+			formaOndaTensao.add(ampV*Math.cos(w*x+Math.toRadians(angV)));
+			x += 0.0001;
+		}
+	}
+
+	private void calculaFormaOndaCorrente() {
+		double x = 0;
+		while (x <= 0.1) {
+			formaOndaCorrente.add(ampI*Math.cos(w*x+Math.toRadians(angI)));
+			x += 0.0001;
+		}		
+	}
+
+	private void calculaFormaOndaPotInst() {
+		for(int aux = 0; aux < formaOndaTensao.size(); aux++) {
+			formaOndaPotInst.add(formaOndaTensao.get(aux) * formaOndaCorrente.get(aux));
+		}
+		
 	}
 }
