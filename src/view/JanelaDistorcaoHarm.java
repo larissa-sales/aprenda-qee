@@ -16,6 +16,10 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+
+import controller.CalculosUC2;
+import controller.CalculosUC3;
+
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.JSpinner;
@@ -23,6 +27,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JTextField;
 import java.util.List;
 import java.awt.FlowLayout;
+import javax.swing.JTextArea;
 
 public class JanelaDistorcaoHarm {
 
@@ -35,10 +40,10 @@ public class JanelaDistorcaoHarm {
 	private GraphPanel graficoHarm6;
 	private GraphPanel graficoFund;
 	private GraphPanel graficoDistRes;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ButtonGroup buttonGroupHarm = new ButtonGroup();
 	private JTextField textAmpH1;
 	private JTextField textAngH1;
-	private JTextField textFourier;
+	private CalculosUC3 calculosUC3;
 
 	/**
 	 * Launch the application.
@@ -78,7 +83,7 @@ public class JanelaDistorcaoHarm {
 		JLabel lblDistHarmonica = new JLabel("Distor\u00E7\u00E3o Harm\u00F4nica");
 		lblDistHarmonica.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblDistHarmonica.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDistHarmonica.setBounds(359, 50, 290, 30);
+		lblDistHarmonica.setBounds(359, 40, 290, 30);
 		frmAprendaQEE.getContentPane().add(lblDistHarmonica);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -92,25 +97,25 @@ public class JanelaDistorcaoHarm {
 		
 		JPanel panelBordaOrdem = new JPanel();
 		panelBordaOrdem.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nicos", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelBordaOrdem.setBounds(59, 91, 90, 88);
+		panelBordaOrdem.setBounds(148, 91, 90, 88);
 		frmAprendaQEE.getContentPane().add(panelBordaOrdem);
 		panelBordaOrdem.setLayout(null);
 		
 		JRadioButton rdbtnPar = new JRadioButton("Par");
 		rdbtnPar.setBounds(6, 24, 78, 23);
 		panelBordaOrdem.add(rdbtnPar);
-		buttonGroup.add(rdbtnPar);
+		buttonGroupHarm.add(rdbtnPar);
 		rdbtnPar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JRadioButton rdbtnImpar = new JRadioButton("\u00CDmpar");
 		rdbtnImpar.setBounds(6, 52, 78, 23);
 		panelBordaOrdem.add(rdbtnImpar);
-		buttonGroup.add(rdbtnImpar);
+		buttonGroupHarm.add(rdbtnImpar);
 		rdbtnImpar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JPanel panelBordaGraficoFund = new JPanel();
 		panelBordaGraficoFund.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Fundamental", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelBordaGraficoFund.setBounds(284, 91, 450, 171);
+		panelBordaGraficoFund.setBounds(373, 91, 450, 170);
 		frmAprendaQEE.getContentPane().add(panelBordaGraficoFund);
 		panelBordaGraficoFund.setLayout(new GridLayout(0, 1, 0, 0));
 		
@@ -122,7 +127,7 @@ public class JanelaDistorcaoHarm {
 		panelBordaGraficoFund.add(graficoFund);
 		
 		JPanel panelNHarm = new JPanel();
-		panelNHarm.setBounds(59, 190, 167, 25);
+		panelNHarm.setBounds(148, 190, 167, 25);
 		frmAprendaQEE.getContentPane().add(panelNHarm);
 		panelNHarm.setLayout(null);
 		
@@ -144,13 +149,13 @@ public class JanelaDistorcaoHarm {
 			}
 		});
 		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnSimular.setBounds(59, 226, 90, 25);
+		btnSimular.setBounds(148, 226, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnSimular);
 		
 		JPanel panelH1 = new JPanel();
 		panelH1.setLayout(null);
 		panelH1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nico 1", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelH1.setBounds(59, 291, 189, 121);
+		panelH1.setBounds(148, 285, 189, 121);
 		frmAprendaQEE.getContentPane().add(panelH1);
 		
 		JLabel labelAmpH1 = new JLabel("Amplitude");
@@ -188,7 +193,7 @@ public class JanelaDistorcaoHarm {
 		
 		JPanel panelOndaH1 = new JPanel();
 		panelOndaH1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Harmônico 1", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelOndaH1.setBounds(284, 291, 450, 171);
+		panelOndaH1.setBounds(373, 285, 450, 170);
 		frmAprendaQEE.getContentPane().add(panelOndaH1);
 		panelOndaH1.setLayout(new GridLayout(0, 1, 0, 0));
 				
@@ -198,7 +203,7 @@ public class JanelaDistorcaoHarm {
 		
 		JPanel panelDistRes = new JPanel();
 		panelDistRes.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Distorcida Resultante", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelDistRes.setBounds(59, 481, 415, 157);
+		panelDistRes.setBounds(65, 473, 415, 170);
 		frmAprendaQEE.getContentPane().add(panelDistRes);
 		panelDistRes.setLayout(new GridLayout(0, 1, 0, 0));
 		
@@ -206,20 +211,15 @@ public class JanelaDistorcaoHarm {
 		panelDistRes.add(graficoDistRes);
 		
 		JPanel panelFourier = new JPanel();
-		panelFourier.setBounds(484, 494, 395, 47);
+		panelFourier.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "S\u00E9rie de Fourier", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
+		panelFourier.setBounds(490, 473, 431, 88);
 		frmAprendaQEE.getContentPane().add(panelFourier);
 		panelFourier.setLayout(null);
 		
-		JLabel lblFourier = new JLabel("Fourier");
-		lblFourier.setBounds(0, 0, 70, 25);
-		panelFourier.add(lblFourier);
-		lblFourier.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		textFourier = new JTextField();
-		textFourier.setBounds(0, 25, 395, 22);
-		panelFourier.add(textFourier);
-		textFourier.setEditable(false);
-		textFourier.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textFourier.setColumns(10);
+		JTextArea txtrFourier = new JTextArea();
+		txtrFourier.setEditable(false);
+		txtrFourier.setBounds(10, 22, 411, 55);
+		panelFourier.add(txtrFourier);
+		txtrFourier.setLineWrap(true);
 	}
 }
