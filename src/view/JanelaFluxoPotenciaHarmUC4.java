@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class JanelaFluxoPotenciaHarmUC4 {
 
@@ -40,6 +43,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 	private JTextField textPotLiq;
 	private JTextField textPotDist;
 	private JTextField textTpf;
+	private JTextField textOH;
 	
 	/**
 	 * Launch the application.
@@ -102,19 +106,19 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		textAmpV = new JTextField();
 		textAmpV.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAmpV.setColumns(10);
-		textAmpV.setBounds(97, 18, 86, 22);
+		textAmpV.setBounds(97, 18, 82, 22);
 		panelTensao.add(textAmpV);
 		
 		textAngV = new JTextField();
 		textAngV.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAngV.setColumns(10);
-		textAngV.setBounds(97, 53, 86, 22);
+		textAngV.setBounds(97, 53, 82, 22);
 		panelTensao.add(textAngV);
 		
 		JPanel panelCorrente = new JPanel();
 		panelCorrente.setLayout(null);
 		panelCorrente.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Corrente", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelCorrente.setBounds(56, 207, 189, 121);
+		panelCorrente.setBounds(56, 207, 189, 135);
 		frmAprendaQEE.getContentPane().add(panelCorrente);
 		
 		JLabel lblAmpI = new JLabel("Amplitude");
@@ -130,25 +134,64 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		textAmpI = new JTextField();
 		textAmpI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAmpI.setColumns(10);
-		textAmpI.setBounds(97, 18, 86, 22);
+		textAmpI.setBounds(97, 18, 82, 22);
 		panelCorrente.add(textAmpI);
 		
 		textAngI = new JTextField();
 		textAngI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAngI.setColumns(10);
-		textAngI.setBounds(97, 54, 86, 22);
+		textAngI.setBounds(97, 54, 82, 22);
 		panelCorrente.add(textAngI);
 		
-		JLabel lblOrdemH1 = new JLabel("Ordem Harm\u00F4nica");
-		lblOrdemH1.setBounds(6, 88, 130, 25);
-		panelCorrente.add(lblOrdemH1);
-		lblOrdemH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JSlider sliderOH = new JSlider();
+		textOH = new JTextField();
+		textOH.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textOH.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(Integer.parseInt(textOH.getText()) <= sliderOH.getMaximum()) {
+						if(Integer.parseInt(textOH.getText()) >= sliderOH.getMinimum()) {
+							sliderOH.setValue(Integer.parseInt(textOH.getText()));
+						}
+						else {
+							textOH.setText("0");
+							sliderOH.setValue(0);
+						}
+					}
+					else {
+						textOH.setText("0");
+						sliderOH.setValue(0);					
+					}
+				}
+				catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		JPanel panelOrdemH = new JPanel();
+		panelOrdemH.setBounds(6, 87, 177, 48);
+		panelCorrente.add(panelOrdemH);
+		panelOrdemH.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Ordem Harm\u00F4nica", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelOrdemH.setLayout(null);
 		
-		JSpinner spinnerOrdemHarm = new JSpinner();
-		spinnerOrdemHarm.setModel(new SpinnerNumberModel(1, 1, 15, 1));
-		spinnerOrdemHarm.setBounds(126, 87, 57, 25);
-		panelCorrente.add(spinnerOrdemHarm);
-		spinnerOrdemHarm.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		sliderOH.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				textOH.setText(Integer.toString(sliderOH.getValue()));
+			}
+		});
+		sliderOH.setValue(0);
+		sliderOH.setMaximum(15);
+		sliderOH.setBounds(6, 16, 107, 26);
+		panelOrdemH.add(sliderOH);
+		
+		textOH.setBounds(120, 18, 47, 22);
+		panelOrdemH.add(textOH);
+		textOH.setColumns(10);
 		
 		JButton btnSimular = new JButton("Simular");
 		btnSimular.addActionListener(new ActionListener() {
@@ -158,7 +201,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 					calculosUC4.setAngV(Double.parseDouble(textAngV.getText()));
 					calculosUC4.setAmpI(Double.parseDouble(textAmpI.getText()));
 					calculosUC4.setAngI(Double.parseDouble(textAngI.getText()));
-					//calculosUC4.setOrdemH((Integer)spinnerOrdemH.getValue());
+					calculosUC4.setOrdemH(sliderOH.getValue());
 					calculosUC4.calcular();
 					textPotLiq.setText(String.format("%.2f", calculosUC4.getPotLiq()));
 					textPotDist.setText(String.format("%.2f", calculosUC4.getPotDist()));
@@ -180,7 +223,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 			}
 		});
 		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnSimular.setBounds(56, 345, 90, 25);
+		btnSimular.setBounds(56, 364, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnSimular);
 		
 		JPanel panelBordaGraficoTensao = new JPanel();
