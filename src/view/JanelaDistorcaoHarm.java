@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -32,13 +33,13 @@ import javax.swing.JTextArea;
 public class JanelaDistorcaoHarm {
 
 	private JFrame frmAprendaQEE;
+	private GraphPanel graficoFund;
 	private GraphPanel graficoHarm1;
 	private GraphPanel graficoHarm2;
 	private GraphPanel graficoHarm3;
 	private GraphPanel graficoHarm4;
 	private GraphPanel graficoHarm5;
 	private GraphPanel graficoHarm6;
-	private GraphPanel graficoFund;
 	private GraphPanel graficoDistRes;
 	private final ButtonGroup buttonGroupHarm = new ButtonGroup();
 	private JTextField textAmpH1;
@@ -79,21 +80,13 @@ public class JanelaDistorcaoHarm {
 		frmAprendaQEE.setLocationRelativeTo(null);
 		frmAprendaQEE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmAprendaQEE.getContentPane().setLayout(null);
+		calculosUC3 = new CalculosUC3();
 		
 		JLabel lblDistHarmonica = new JLabel("Distor\u00E7\u00E3o Harm\u00F4nica");
 		lblDistHarmonica.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblDistHarmonica.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDistHarmonica.setBounds(359, 40, 290, 30);
 		frmAprendaQEE.getContentPane().add(lblDistHarmonica);
-		
-		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {						
-				frmAprendaQEE.dispose();				
-			}
-		});
-		btnVoltar.setBounds(880, 600, 90, 25);
-		frmAprendaQEE.getContentPane().add(btnVoltar);
 		
 		JPanel panelBordaOrdem = new JPanel();
 		panelBordaOrdem.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nicos", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
@@ -113,6 +106,45 @@ public class JanelaDistorcaoHarm {
 		buttonGroupHarm.add(rdbtnImpar);
 		rdbtnImpar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
+		JPanel panelNHarm = new JPanel();
+		panelNHarm.setBounds(148, 190, 167, 25);
+		frmAprendaQEE.getContentPane().add(panelNHarm);
+		panelNHarm.setLayout(null);
+		
+		JSpinner spinnerNumHarm = new JSpinner();
+		spinnerNumHarm.setBounds(110, 0, 57, 25);
+		panelNHarm.add(spinnerNumHarm);
+		spinnerNumHarm.setModel(new SpinnerNumberModel(0, 0, 6, 1));
+		spinnerNumHarm.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JLabel lblNHarmnicos = new JLabel("N\u00BA Harm\u00F4nicos");
+		lblNHarmnicos.setBounds(0, 0, 100, 25);
+		panelNHarm.add(lblNHarmnicos);
+		lblNHarmnicos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnSimular = new JButton("Simular");
+		btnSimular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					//calculosUC3.setIsHarmPar(isHarmPar);
+					//calculosUC3.setNumHarm((Integer)spinnerNumHarm.getValue());
+					graficoFund.setScores(calculosUC3.getFormaOndaFund());
+				}
+				catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+				catch(IllegalArgumentException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSimular.setBounds(148, 226, 90, 25);
+		frmAprendaQEE.getContentPane().add(btnSimular);
+		
 		JPanel panelBordaGraficoFund = new JPanel();
 		panelBordaGraficoFund.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Fundamental", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelBordaGraficoFund.setBounds(373, 91, 450, 170);
@@ -125,32 +157,6 @@ public class JanelaDistorcaoHarm {
 		flowLayout.setHgap(0);
 		graficoFund.setBounds(6, 16, 315, 135);
 		panelBordaGraficoFund.add(graficoFund);
-		
-		JPanel panelNHarm = new JPanel();
-		panelNHarm.setBounds(148, 190, 167, 25);
-		frmAprendaQEE.getContentPane().add(panelNHarm);
-		panelNHarm.setLayout(null);
-		
-		JSpinner spinnerNHarm = new JSpinner();
-		spinnerNHarm.setBounds(110, 0, 57, 25);
-		panelNHarm.add(spinnerNHarm);
-		spinnerNHarm.setModel(new SpinnerNumberModel(0, 0, 6, 1));
-		spinnerNHarm.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JLabel lblNHarmnicos = new JLabel("N\u00BA Harm\u00F4nicos");
-		lblNHarmnicos.setBounds(0, 0, 100, 25);
-		panelNHarm.add(lblNHarmnicos);
-		lblNHarmnicos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JButton btnSimular = new JButton("Simular");
-		btnSimular.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnSimular.setBounds(148, 226, 90, 25);
-		frmAprendaQEE.getContentPane().add(btnSimular);
 		
 		JPanel panelH1 = new JPanel();
 		panelH1.setLayout(null);
@@ -181,15 +187,20 @@ public class JanelaDistorcaoHarm {
 		panelH1.add(textAngH1);
 		
 		JLabel lblOrdemH1 = new JLabel("Ordem Harm\u00F4nica");
-		lblOrdemH1.setBounds(6, 88, 130, 25);
+		lblOrdemH1.setBounds(6, 85, 130, 25);
 		panelH1.add(lblOrdemH1);
 		lblOrdemH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JSpinner spinnerOrdemHarm = new JSpinner();
 		spinnerOrdemHarm.setBounds(126, 85, 57, 25);
 		panelH1.add(spinnerOrdemHarm);
-		spinnerOrdemHarm.setModel(new SpinnerNumberModel(0, 0, 6, 1));
+		spinnerOrdemHarm.setModel(new SpinnerNumberModel(0, 0, 15, 1));
 		spinnerOrdemHarm.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnSimularH = new JButton("Simular");
+		btnSimularH.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSimularH.setBounds(149, 417, 90, 25);
+		frmAprendaQEE.getContentPane().add(btnSimularH);
 		
 		JPanel panelOndaH1 = new JPanel();
 		panelOndaH1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Harmônico 1", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
@@ -221,5 +232,14 @@ public class JanelaDistorcaoHarm {
 		txtrFourier.setBounds(10, 22, 411, 55);
 		panelFourier.add(txtrFourier);
 		txtrFourier.setLineWrap(true);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {						
+				frmAprendaQEE.dispose();				
+			}
+		});
+		btnVoltar.setBounds(880, 600, 90, 25);
+		frmAprendaQEE.getContentPane().add(btnVoltar);
 	}
 }

@@ -81,6 +81,7 @@ public class JanelaFluxoPotenciaFund {
 		lblFluxoPotFund.setHorizontalAlignment(SwingConstants.CENTER);
 		frmAprendaQEE.getContentPane().add(lblFluxoPotFund);
 		
+		
 		JPanel panelTensao = new JPanel();
 		panelTensao.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Tens\u00E3o", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelTensao.setBounds(56, 108, 189, 83);
@@ -156,7 +157,6 @@ public class JanelaFluxoPotenciaFund {
 		panelBordaGraficoCorrente.add(graficoCorrente);
 		
 		JButton btnSimular = new JButton("Simular");
-		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSimular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -181,10 +181,11 @@ public class JanelaFluxoPotenciaFund {
 				}
 				catch(NullPointerException e) {
 					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
-				}
-				
+				}				
 			}
 		});
+		
+		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSimular.setBounds(56, 301, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnSimular);
 		

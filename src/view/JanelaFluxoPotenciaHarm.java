@@ -7,10 +7,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+
+import controller.CalculosUC2;
+import controller.CalculosUC4;
+
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -27,9 +32,11 @@ public class JanelaFluxoPotenciaHarm {
 	private JTextField textAngV;
 	private JTextField textAmpI;
 	private JTextField textAngI;
+	private JSpinner spinnerOrdemH;
 	private GraphPanel graficoTensao;
 	private GraphPanel graficoCorrente;
 	private GraphPanel graficoPotHarmInst;
+	private CalculosUC4 calculosUC4;
 	private JTextField textPotLiq;
 	private JTextField textPotDist;
 	private JTextField textTpf;
@@ -68,6 +75,7 @@ public class JanelaFluxoPotenciaHarm {
 		frmAprendaQEE.setLocationRelativeTo(null);
 		frmAprendaQEE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmAprendaQEE.getContentPane().setLayout(null);
+		calculosUC4 = new CalculosUC4();
 		
 		JLabel lblFluxoPotHarmonico = new JLabel("Fluxo de Pot\u00EAncia Harm\u00F4nico");
 		lblFluxoPotHarmonico.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -137,12 +145,39 @@ public class JanelaFluxoPotenciaHarm {
 		lblOrdemH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JSpinner spinnerOrdemHarm = new JSpinner();
-		spinnerOrdemHarm.setModel(new SpinnerNumberModel(0, 0, 6, 1));
+		spinnerOrdemHarm.setModel(new SpinnerNumberModel(1, 1, 15, 1));
 		spinnerOrdemHarm.setBounds(126, 87, 57, 25);
 		panelCorrente.add(spinnerOrdemHarm);
 		spinnerOrdemHarm.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnSimular = new JButton("Simular");
+		btnSimular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					calculosUC4.setAmpV(Double.parseDouble(textAmpV.getText()));
+					calculosUC4.setAngV(Double.parseDouble(textAngV.getText()));
+					calculosUC4.setAmpI(Double.parseDouble(textAmpI.getText()));
+					calculosUC4.setAngI(Double.parseDouble(textAngI.getText()));
+					//calculosUC4.setOrdemH((Integer)spinnerOrdemH.getValue());
+					calculosUC4.calcular();
+					textPotLiq.setText(String.format("%.2f", calculosUC4.getPotLiq()));
+					textPotDist.setText(String.format("%.2f", calculosUC4.getPotDist()));
+					textTpf.setText(String.format("%.2f", calculosUC4.getTpf()));
+					graficoTensao.setScores(calculosUC4.getFormaOndaTensaoFund());
+					graficoCorrente.setScores(calculosUC4.getFormaOndaCorrenteHarm());
+					graficoPotHarmInst.setScores(calculosUC4.getFormaOndaPotHarmInst());
+										
+				}catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+				catch(IllegalArgumentException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSimular.setBounds(56, 345, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnSimular);
