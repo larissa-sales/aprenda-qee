@@ -30,7 +30,7 @@ import java.util.List;
 import java.awt.FlowLayout;
 import javax.swing.JTextArea;
 
-public class JanelaDistorcaoHarm {
+public class JanelaDistorcaoHarmUC3 {
 
 	private JFrame frmAprendaQEE;
 	private GraphPanel graficoFund;
@@ -53,7 +53,7 @@ public class JanelaDistorcaoHarm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaDistorcaoHarm window = new JanelaDistorcaoHarm();
+					JanelaDistorcaoHarmUC3 window = new JanelaDistorcaoHarmUC3();
 					window.frmAprendaQEE.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,7 +65,7 @@ public class JanelaDistorcaoHarm {
 	/**
 	 * Create the application.
 	 */
-	public JanelaDistorcaoHarm() {
+	public JanelaDistorcaoHarmUC3() {
 		initialize();
 	}
 

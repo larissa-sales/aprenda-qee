@@ -25,7 +25,7 @@ import java.util.List;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-public class JanelaFluxoPotenciaHarm {
+public class JanelaFluxoPotenciaHarmUC4 {
 
 	private JFrame frmAprendaQEE;
 	private JTextField textAmpV;
@@ -48,7 +48,7 @@ public class JanelaFluxoPotenciaHarm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaFluxoPotenciaHarm window = new JanelaFluxoPotenciaHarm();
+					JanelaFluxoPotenciaHarmUC4 window = new JanelaFluxoPotenciaHarmUC4();
 					window.frmAprendaQEE.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,7 +60,7 @@ public class JanelaFluxoPotenciaHarm {
 	/**
 	 * Create the application.
 	 */
-	public JanelaFluxoPotenciaHarm() {
+	public JanelaFluxoPotenciaHarmUC4() {
 		initialize();
 	}
 
@@ -167,7 +167,8 @@ public class JanelaFluxoPotenciaHarm {
 					graficoCorrente.setScores(calculosUC4.getFormaOndaCorrenteHarm());
 					graficoPotHarmInst.setScores(calculosUC4.getFormaOndaPotHarmInst());
 										
-				}catch(NumberFormatException e) {
+				}
+				catch(NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
 				}
 				catch(IllegalArgumentException e) {

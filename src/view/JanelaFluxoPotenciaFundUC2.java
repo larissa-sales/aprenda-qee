@@ -22,7 +22,7 @@ import controller.CalculosUC2;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 
-public class JanelaFluxoPotenciaFund {
+public class JanelaFluxoPotenciaFundUC2 {
 
 	private JFrame frmAprendaQEE;
 	private JTextField textAmpV;
@@ -45,7 +45,7 @@ public class JanelaFluxoPotenciaFund {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaFluxoPotenciaFund window = new JanelaFluxoPotenciaFund();
+					JanelaFluxoPotenciaFundUC2 window = new JanelaFluxoPotenciaFundUC2();
 					window.frmAprendaQEE.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +57,7 @@ public class JanelaFluxoPotenciaFund {
 	/**
 	 * Create the application.
 	 */
-	public JanelaFluxoPotenciaFund() {
+	public JanelaFluxoPotenciaFundUC2() {
 		initialize();
 	}
 

@@ -1,6 +1,6 @@
 import java.awt.EventQueue;
 
-import view.JanelaPrincipal;
+import view.JanelaPrincipalUC1;
 
 public class Main {
 	/**
@@ -10,7 +10,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaPrincipal frame = new JanelaPrincipal();
+					JanelaPrincipalUC1 frame = new JanelaPrincipalUC1();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

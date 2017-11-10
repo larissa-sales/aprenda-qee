@@ -26,14 +26,14 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.Font;
 import java.awt.Frame;
 
-public class JanelaPrincipal extends JFrame {
+public class JanelaPrincipalUC1 extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
 	 * Create the frame.
 	 */
-	public JanelaPrincipal() {
+	public JanelaPrincipalUC1() {
 		setTitle("Aprenda QEE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500, 400);
@@ -54,7 +54,7 @@ public class JanelaPrincipal extends JFrame {
 		btnDistorcaoHarmonica.setBounds(127, 206, 230, 25);
 		btnDistorcaoHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JanelaDistorcaoHarm janela = new JanelaDistorcaoHarm();
+				JanelaDistorcaoHarmUC3 janela = new JanelaDistorcaoHarmUC3();
 				janela.NewScreen();
 			}
 		});
@@ -63,7 +63,7 @@ public class JanelaPrincipal extends JFrame {
 		btnPotenciaFundamental.setBounds(127, 129, 230, 25);
 		btnPotenciaFundamental.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JanelaFluxoPotenciaFund janela = new JanelaFluxoPotenciaFund();
+				JanelaFluxoPotenciaFundUC2 janela = new JanelaFluxoPotenciaFundUC2();
 				janela.NewScreen();
 			}
 		});
@@ -74,7 +74,7 @@ public class JanelaPrincipal extends JFrame {
 		btnPotenciaHarmonica.setBounds(127, 283, 230, 25);
 		btnPotenciaHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JanelaFluxoPotenciaHarm janela = new JanelaFluxoPotenciaHarm();
+				JanelaFluxoPotenciaHarmUC4 janela = new JanelaFluxoPotenciaHarmUC4();
 				janela.NewScreen();
 			}
 		});
