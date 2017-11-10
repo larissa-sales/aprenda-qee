@@ -35,6 +35,8 @@ public class CalculosUC2 implements Calculo{
 		calculaFormaOndaPotInst();
 	}
 
+	
+	//entradas
 
 	public double getAmpV() {
 		return ampV;
@@ -43,7 +45,6 @@ public class CalculosUC2 implements Calculo{
 
 	public void setAmpV(double ampV) {
 		if(ampV < 0 || ampV > 220) throw new IllegalArgumentException("Amplitude da Tensão deve estar entre 0 e 220");
-		
 		this.ampV = ampV;
 	}
 
@@ -80,7 +81,9 @@ public class CalculosUC2 implements Calculo{
 		this.angI = angI;
 	}
 
-
+	
+	//saídas
+	
 	public double getPotAtiva() {
 		return potAtiva;
 	}
@@ -100,6 +103,9 @@ public class CalculosUC2 implements Calculo{
 		return fatorPot;
 	}
 	
+	
+	//calculos saídas
+	
 	private void calculaPotAtiva() {
 		potAtiva = ampV * ampI * Math.cos(Math.toRadians(angV - angI));
 	}
@@ -118,7 +124,10 @@ public class CalculosUC2 implements Calculo{
 	private void calculaFatorPot() {
 		fatorPot = Math.cos(Math.toRadians(angV - angI));
 	}
-
+	
+	
+	//gráficos
+	
 	public List<Double> getFormaOndaTensao() {
 		return formaOndaTensao;
 	}
@@ -131,24 +140,34 @@ public class CalculosUC2 implements Calculo{
 		return formaOndaPotInst;
 	}
 	
+	
+	//cálculos gráficos
+	
 	private void calculaFormaOndaTensao() {
 		double x = 0;
+		formaOndaTensao.clear();
+		
 		while (x <= 0.1) {
-			formaOndaTensao.add(ampV*Math.cos(w*x+Math.toRadians(angV)));
+			formaOndaTensao.add(ampV * Math.cos(w * x + Math.toRadians(angV)));
 			x += 0.0001;
 		}
 	}
 
 	private void calculaFormaOndaCorrente() {
 		double x = 0;
+		formaOndaCorrente.clear();
+		
 		while (x <= 0.1) {
-			formaOndaCorrente.add(ampI*Math.cos(w*x+Math.toRadians(angI)));
+			formaOndaCorrente.add(ampI * Math.cos(w * x + Math.toRadians(angI)));
 			x += 0.0001;
 		}		
 	}
 
 	private void calculaFormaOndaPotInst() {
-		for(int aux = 0; aux < formaOndaTensao.size(); aux++) {
+		formaOndaPotInst.clear();
+		int aux;
+		
+		for(aux = 0; aux < formaOndaTensao.size(); aux++) {
 			formaOndaPotInst.add(formaOndaTensao.get(aux) * formaOndaCorrente.get(aux));
 		}
 		

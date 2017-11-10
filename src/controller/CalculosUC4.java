@@ -29,6 +29,9 @@ public class CalculosUC4 implements Calculo{
 		calculaPotLiq();
 		calculaPotDist(); 
 		calculaTpf();		
+		calculaFormaOndaTensaoFund();
+		calculaFormaOndaCorrenteHarm();
+		calculaFormaOndaPotHarmInst();		
 	}
 	
 	
@@ -101,7 +104,7 @@ public class CalculosUC4 implements Calculo{
 	}
 
 	private void calculaPotDist() {
-		potDist = 0;
+		potDist = ampV * ampI;
 	}
 
 	private void calculaTpf() {
@@ -111,6 +114,7 @@ public class CalculosUC4 implements Calculo{
 	
 	//gráficos
 	
+		
 	public List<Double> getFormaOndaTensaoFund() {
 		return formaOndaTensaoFund;
 	}
@@ -136,6 +140,8 @@ public class CalculosUC4 implements Calculo{
 
 	private void calculaFormaOndaPotHarmInst() {
 		formaOndaPotHarmInst.clear();
+		
+		
 	}
 	
 	
