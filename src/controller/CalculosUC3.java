@@ -3,6 +3,11 @@ package controller;
 import java.util.List;
 
 public class CalculosUC3 implements Calculo {
+	private final double w = 2*Math.PI*60;
+	
+
+	private double ampV;
+	private double angV;
 	private boolean IsHarmPar;
 	private int NumHarm;
 	private double AmpH1;
@@ -40,6 +45,26 @@ public class CalculosUC3 implements Calculo {
 
 
 	//entradas
+	
+	public double getAmpV() {
+		return ampV;
+	}
+
+
+	public void setAmpV(double ampV) {
+		this.ampV = ampV;
+	}
+
+
+	public double getAngV() {
+		return angV;
+	}
+
+
+	public void setAngV(double angV) {
+		this.angV = angV;
+	}
+
 	
 	public boolean isIsHarmPar() {
 		return IsHarmPar;
@@ -286,6 +311,12 @@ public class CalculosUC3 implements Calculo {
 	
 	private void calculaFormaOndaFund() {
 		formaOndaFund.clear();
+		double x = 0;
+		
+		while (x <= 0.1) {
+			formaOndaFund.add(ampV * Math.cos(w * x + Math.toRadians(angV)));
+			x += 0.0001;
+		}	
 	}
 
 
