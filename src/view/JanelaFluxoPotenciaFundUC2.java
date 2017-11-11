@@ -81,6 +81,7 @@ public class JanelaFluxoPotenciaFundUC2 {
 		lblFluxoPotFund.setHorizontalAlignment(SwingConstants.CENTER);
 		frmAprendaQEE.getContentPane().add(lblFluxoPotFund);
 		
+		//painel de tensao
 		
 		JPanel panelTensao = new JPanel();
 		panelTensao.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Tens\u00E3o", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
@@ -110,6 +111,9 @@ public class JanelaFluxoPotenciaFundUC2 {
 		textAngV.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAngV.setColumns(10);
 		
+		
+		//painel de corrente
+		
 		JPanel panelCorrente = new JPanel();
 		panelCorrente.setLayout(null);
 		panelCorrente.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Corrente", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
@@ -138,6 +142,9 @@ public class JanelaFluxoPotenciaFundUC2 {
 		textAngI.setBounds(97, 54, 86, 22);
 		panelCorrente.add(textAngI);
 		
+		
+		//grafico de tensão
+		
 		JPanel panelBordaGraficoTensao = new JPanel();
 		panelBordaGraficoTensao.setBounds(255, 108, 344, 182);
 		frmAprendaQEE.getContentPane().add(panelBordaGraficoTensao);
@@ -147,6 +154,9 @@ public class JanelaFluxoPotenciaFundUC2 {
 		graficoTensao = new GraphPanel(new ArrayList<>());
 		panelBordaGraficoTensao.add(graficoTensao);
 		
+		
+		//grafico de corrente
+		
 		JPanel panelBordaGraficoCorrente = new JPanel();
 		panelBordaGraficoCorrente.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Corrente (I)", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelBordaGraficoCorrente.setBounds(609, 108, 344, 182);
@@ -155,6 +165,9 @@ public class JanelaFluxoPotenciaFundUC2 {
 		
 		graficoCorrente = new GraphPanel(new ArrayList<>());
 		panelBordaGraficoCorrente.add(graficoCorrente);
+		
+		
+		//botão simular
 		
 		JButton btnSimular = new JButton("Simular");
 		btnSimular.addActionListener(new ActionListener() {
@@ -188,6 +201,8 @@ public class JanelaFluxoPotenciaFundUC2 {
 		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSimular.setBounds(56, 301, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnSimular);
+		
+		//painel dados de saida
 		
 		JPanel panelDados = new JPanel();
 		panelDados.setBounds(56, 379, 278, 133);
@@ -254,6 +269,9 @@ public class JanelaFluxoPotenciaFundUC2 {
 		textFatorPot.setBounds(136, 112, 86, 20);
 		panelDados.add(textFatorPot);
 		textFatorPot.setColumns(10);
+		
+		
+		//grafico potencia instantanea
 		
 		JPanel panelBordaGraficoPotInst = new JPanel();
 		panelBordaGraficoPotInst.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Potência Instantânea", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
