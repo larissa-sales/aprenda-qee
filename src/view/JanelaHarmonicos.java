@@ -18,21 +18,27 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeListener;
+
+import controller.CalculosUC3;
+
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class JanelaHarmonicos {
 
-	private JFrame frame;
+	private JFrame frmHarm;
+	private CalculosUC3 calculosHarm;
 	private JTextField textAmpH1;
 	private JTextField textAngH1;
-	private GraphPanel graficoHarm1;
-	private GraphPanel graficoHarm2;
-	private GraphPanel graficoHarm3;
-	private GraphPanel graficoHarm4;
-	private GraphPanel graficoHarm5;
-	private GraphPanel graficoHarm6;
+	private GraphPanel graficoH1;
+	private GraphPanel graficoH2;
+	private GraphPanel graficoH3;
+	private GraphPanel graficoH4;
+	private GraphPanel graficoH5;
+	private GraphPanel graficoH6;
 	private JTextField textOrdemH1;
 	private JTextField textAmpH2;
 	private JTextField textAngH2;
@@ -58,7 +64,7 @@ public class JanelaHarmonicos {
 			public void run() {
 				try {
 					JanelaHarmonicos window = new JanelaHarmonicos();
-					window.frame.setVisible(true);
+					window.frmHarm.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -77,19 +83,26 @@ public class JanelaHarmonicos {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setSize(1024, 700);
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmHarm = new JFrame();
+		frmHarm.setSize(1024, 700);
+		frmHarm.setLocationRelativeTo(null);
+		frmHarm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmHarm.getContentPane().setLayout(null);
+		calculosHarm = new CalculosUC3();
+		
+		JLabel lblHarmnicos = new JLabel("Harm\u00F4nicos");
+		lblHarmnicos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHarmnicos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblHarmnicos.setBounds(397, 40, 214, 25);
+		frmHarm.getContentPane().add(lblHarmnicos);
 		
 		//harmonico 1
 		
 		JPanel panelH1 = new JPanel();
 		panelH1.setLayout(null);
 		panelH1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nico 1", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelH1.setBounds(38, 39, 163, 144);
-		frame.getContentPane().add(panelH1);
+		panelH1.setBounds(39, 103, 163, 144);
+		frmHarm.getContentPane().add(panelH1);
 		
 		JLabel lblAmpH1 = new JLabel("Amplitude");
 		lblAmpH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -167,14 +180,14 @@ public class JanelaHarmonicos {
 		
 		JPanel panelFormaOndaH1 = new JPanel();
 		panelFormaOndaH1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Harmônico 1", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelFormaOndaH1.setBounds(211, 39, 278, 144);
-		frame.getContentPane().add(panelFormaOndaH1);
+		panelFormaOndaH1.setBounds(212, 103, 278, 144);
+		frmHarm.getContentPane().add(panelFormaOndaH1);
 		panelFormaOndaH1.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		graficoHarm1 = new GraphPanel(new ArrayList<>());
-		panelFormaOndaH1.add(graficoHarm1);
-		graficoHarm1.setBounds(6, 16, 315, 135);
-		graficoHarm1.setLayout(null);
+		graficoH1 = new GraphPanel(new ArrayList<>());
+		panelFormaOndaH1.add(graficoH1);
+		graficoH1.setBounds(6, 16, 315, 135);
+		graficoH1.setLayout(null);
 		
 		
 		//harmonico 2
@@ -182,8 +195,8 @@ public class JanelaHarmonicos {
 		JPanel panelH2 = new JPanel();
 		panelH2.setLayout(null);
 		panelH2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nico 2", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelH2.setBounds(38, 194, 163, 144);
-		frame.getContentPane().add(panelH2);
+		panelH2.setBounds(39, 258, 163, 144);
+		frmHarm.getContentPane().add(panelH2);
 		
 		JLabel lblAmpH2 = new JLabel("Amplitude");
 		lblAmpH2.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -261,14 +274,14 @@ public class JanelaHarmonicos {
 		
 		JPanel panelFormaOndaH2 = new JPanel();
 		panelFormaOndaH2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Harmônico 2", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelFormaOndaH2.setBounds(211, 194, 278, 144);
-		frame.getContentPane().add(panelFormaOndaH2);
+		panelFormaOndaH2.setBounds(212, 258, 278, 144);
+		frmHarm.getContentPane().add(panelFormaOndaH2);
 		panelFormaOndaH2.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		graficoHarm2 = new GraphPanel(new ArrayList<>());
-		panelFormaOndaH2.add(graficoHarm2);
-		graficoHarm2.setBounds(6, 16, 315, 135);
-		graficoHarm2.setLayout(null);
+		graficoH2 = new GraphPanel(new ArrayList<>());
+		panelFormaOndaH2.add(graficoH2);
+		graficoH2.setBounds(6, 16, 315, 135);
+		graficoH2.setLayout(null);
 		
 		
 		//harmonico 3
@@ -276,8 +289,8 @@ public class JanelaHarmonicos {
 		JPanel panelH3 = new JPanel();
 		panelH3.setLayout(null);
 		panelH3.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nico 3", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelH3.setBounds(38, 356, 163, 144);
-		frame.getContentPane().add(panelH3);
+		panelH3.setBounds(39, 420, 163, 144);
+		frmHarm.getContentPane().add(panelH3);
 		
 		JLabel lblAmpH3 = new JLabel("Amplitude");
 		lblAmpH3.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -354,22 +367,22 @@ public class JanelaHarmonicos {
 		
 		JPanel panelFormaOndaH3 = new JPanel();
 		panelFormaOndaH3.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Harmônico 3", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelFormaOndaH3.setBounds(211, 356, 278, 144);
-		frame.getContentPane().add(panelFormaOndaH3);
+		panelFormaOndaH3.setBounds(212, 420, 278, 144);
+		frmHarm.getContentPane().add(panelFormaOndaH3);
 		panelFormaOndaH3.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		graficoHarm3 = new GraphPanel(new ArrayList<>());
-		panelFormaOndaH3.add(graficoHarm3);
-		graficoHarm3.setBounds(6, 16, 315, 135);
-		graficoHarm3.setLayout(null);
+		graficoH3 = new GraphPanel(new ArrayList<>());
+		panelFormaOndaH3.add(graficoH3);
+		graficoH3.setBounds(6, 16, 315, 135);
+		graficoH3.setLayout(null);
 		
 		//harmonico 4
 		
 		JPanel panelH4 = new JPanel();
 		panelH4.setLayout(null);
 		panelH4.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nico 4", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelH4.setBounds(512, 39, 163, 144);
-		frame.getContentPane().add(panelH4);
+		panelH4.setBounds(511, 103, 163, 144);
+		frmHarm.getContentPane().add(panelH4);
 		
 		JLabel lblAmpH4 = new JLabel("Amplitude");
 		lblAmpH4.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -447,14 +460,14 @@ public class JanelaHarmonicos {
 		
 		JPanel panelFormaOndaH4 = new JPanel();
 		panelFormaOndaH4.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Harmônico 4", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelFormaOndaH4.setBounds(685, 39, 278, 144);
-		frame.getContentPane().add(panelFormaOndaH4);
+		panelFormaOndaH4.setBounds(684, 103, 278, 144);
+		frmHarm.getContentPane().add(panelFormaOndaH4);
 		panelFormaOndaH4.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		graficoHarm4 = new GraphPanel(new ArrayList<>());
-		panelFormaOndaH4.add(graficoHarm4);
-		graficoHarm4.setBounds(6, 16, 315, 135);
-		graficoHarm4.setLayout(null);
+		graficoH4 = new GraphPanel(new ArrayList<>());
+		panelFormaOndaH4.add(graficoH4);
+		graficoH4.setBounds(6, 16, 315, 135);
+		graficoH4.setLayout(null);
 		
 		
 		//harmonico 5
@@ -462,8 +475,8 @@ public class JanelaHarmonicos {
 		JPanel panelH5 = new JPanel();
 		panelH5.setLayout(null);
 		panelH5.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nico 5", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelH5.setBounds(512, 194, 163, 144);
-		frame.getContentPane().add(panelH5);
+		panelH5.setBounds(511, 258, 163, 144);
+		frmHarm.getContentPane().add(panelH5);
 		
 		JLabel lblAmpH5 = new JLabel("Amplitude");
 		lblAmpH5.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -541,14 +554,14 @@ public class JanelaHarmonicos {
 		
 		JPanel panelFormaOndaH5 = new JPanel();
 		panelFormaOndaH5.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Harmônico 5", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelFormaOndaH5.setBounds(685, 194, 278, 144);
-		frame.getContentPane().add(panelFormaOndaH5);
+		panelFormaOndaH5.setBounds(684, 258, 278, 144);
+		frmHarm.getContentPane().add(panelFormaOndaH5);
 		panelFormaOndaH5.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		graficoHarm5 = new GraphPanel(new ArrayList<>());
-		panelFormaOndaH5.add(graficoHarm5);
-		graficoHarm5.setBounds(6, 16, 315, 135);
-		graficoHarm5.setLayout(null);
+		graficoH5 = new GraphPanel(new ArrayList<>());
+		panelFormaOndaH5.add(graficoH5);
+		graficoH5.setBounds(6, 16, 315, 135);
+		graficoH5.setLayout(null);
 		
 		
 		//harmonico 6
@@ -556,8 +569,8 @@ public class JanelaHarmonicos {
 		JPanel panelOrdemH6 = new JPanel();
 		panelOrdemH6.setLayout(null);
 		panelOrdemH6.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nico 6", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelOrdemH6.setBounds(512, 356, 163, 144);
-		frame.getContentPane().add(panelOrdemH6);
+		panelOrdemH6.setBounds(511, 420, 163, 144);
+		frmHarm.getContentPane().add(panelOrdemH6);
 		
 		JLabel lblAmpH6 = new JLabel("Amplitude");
 		lblAmpH6.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -634,14 +647,62 @@ public class JanelaHarmonicos {
 		
 		JPanel panelFormaOndaH6 = new JPanel();
 		panelFormaOndaH6.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Forma de Onda Harmônico 6", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelFormaOndaH6.setBounds(685, 356, 278, 144);
-		frame.getContentPane().add(panelFormaOndaH6);
+		panelFormaOndaH6.setBounds(684, 420, 278, 144);
+		frmHarm.getContentPane().add(panelFormaOndaH6);
 		panelFormaOndaH6.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		graficoHarm6 = new GraphPanel(new ArrayList<>());
-		panelFormaOndaH6.add(graficoHarm6);
-		graficoHarm6.setBounds(6, 16, 315, 135);
-		graficoHarm6.setLayout(null);
+		graficoH6 = new GraphPanel(new ArrayList<>());
+		panelFormaOndaH6.add(graficoH6);
+		graficoH6.setBounds(6, 16, 315, 135);
+		graficoH6.setLayout(null);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmHarm.dispose();
+			}
+		});
+		
+		JButton btnSimular = new JButton("Simular");
+		btnSimular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					calculosHarm.setAmpH1(Double.parseDouble(textAmpH1.getText()));
+					calculosHarm.setAngH1(Double.parseDouble(textAngH1.getText()));
+					calculosHarm.setAmpH2(Double.parseDouble(textAmpH2.getText()));
+					calculosHarm.setAngH2(Double.parseDouble(textAngH2.getText()));
+					calculosHarm.setAmpH3(Double.parseDouble(textAmpH3.getText()));
+					calculosHarm.setAngH3(Double.parseDouble(textAngH3.getText()));
+					calculosHarm.setAmpH4(Double.parseDouble(textAmpH4.getText()));
+					calculosHarm.setAngH4(Double.parseDouble(textAngH4.getText()));
+					calculosHarm.setAmpH5(Double.parseDouble(textAmpH5.getText()));
+					calculosHarm.setAngH5(Double.parseDouble(textAngH5.getText()));
+					calculosHarm.setAmpH6(Double.parseDouble(textAmpH6.getText()));
+					calculosHarm.setAngH6(Double.parseDouble(textAngH6.getText()));
+					calculosHarm.calcular();
+					graficoH1.setScores(calculosHarm.getFormaOndaH1());
+					graficoH2.setScores(calculosHarm.getFormaOndaH2());
+					graficoH3.setScores(calculosHarm.getFormaOndaH3());
+					graficoH4.setScores(calculosHarm.getFormaOndaH4());
+					graficoH5.setScores(calculosHarm.getFormaOndaH5());
+					graficoH6.setScores(calculosHarm.getFormaOndaH6());
+				}
+				catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+				catch(IllegalArgumentException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}	
+			}
+		});
+		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSimular.setBounds(459, 600, 90, 25);
+		frmHarm.getContentPane().add(btnSimular);
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnVoltar.setBounds(880, 600, 90, 25);
+		frmHarm.getContentPane().add(btnVoltar);
 	}
-
 }
