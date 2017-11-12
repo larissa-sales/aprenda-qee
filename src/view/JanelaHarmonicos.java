@@ -8,6 +8,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
@@ -15,6 +17,10 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JSlider;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JanelaHarmonicos {
 
@@ -113,15 +119,48 @@ public class JanelaHarmonicos {
 		panelOrdemH1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Ordem Harm\u00F4nica", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelOrdemH1.setLayout(null);
 		
-		JSlider sliderOrdemH1 = new JSlider();
+		JSlider sliderOrdemH1 = new JSlider();		sliderOrdemH1.setMaximum(15);
+		sliderOrdemH1.setValue(0);
+		sliderOrdemH1.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				textOrdemH1.setText(Integer.toString(sliderOrdemH1.getValue()));
+			}
+		});
 		sliderOrdemH1.setBounds(10, 19, 66, 26);
-		panelOrdemH1.add(sliderOrdemH1);
 		
 		textOrdemH1 = new JTextField();
-		textOrdemH1.setBounds(86, 22, 54, 20);
-		panelOrdemH1.add(textOrdemH1);
 		textOrdemH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textOrdemH1.setBounds(86, 22, 54, 20);
 		textOrdemH1.setColumns(10);
+		textOrdemH1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(Integer.parseInt(textOrdemH1.getText()) <= sliderOrdemH1.getMaximum()) {
+						if(Integer.parseInt(textOrdemH1.getText()) >= sliderOrdemH1.getMinimum()) {
+							sliderOrdemH1.setValue(Integer.parseInt(textOrdemH1.getText()));
+						}
+						else {
+							textOrdemH1.setText("0");
+							sliderOrdemH1.setValue(0);
+						}
+					}
+					else {
+						textOrdemH1.setText("0");
+						sliderOrdemH1.setValue(0);					
+					}
+				}
+				catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		
+		panelOrdemH1.add(sliderOrdemH1);		
+		panelOrdemH1.add(textOrdemH1);
 		
 		
 		//grafico h1
@@ -175,10 +214,43 @@ public class JanelaHarmonicos {
 		panelH2.add(panelOrdemH2);
 		
 		JSlider sliderOrdemH2 = new JSlider();
+		sliderOrdemH2.setMaximum(15);
+		sliderOrdemH2.setValue(0);
+		sliderOrdemH2.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				textOrdemH2.setText(Integer.toString(sliderOrdemH2.getValue()));
+			}
+		});
 		sliderOrdemH2.setBounds(10, 19, 66, 26);
 		panelOrdemH2.add(sliderOrdemH2);
 		
 		textOrdemH2 = new JTextField();
+		textOrdemH2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(Integer.parseInt(textOrdemH2.getText()) <= sliderOrdemH2.getMaximum()) {
+						if(Integer.parseInt(textOrdemH2.getText()) >= sliderOrdemH2.getMinimum()) {
+							sliderOrdemH2.setValue(Integer.parseInt(textOrdemH2.getText()));
+						}
+						else {
+							textOrdemH2.setText("0");
+							sliderOrdemH2.setValue(0);
+						}
+					}
+					else {
+						textOrdemH2.setText("0");
+						sliderOrdemH2.setValue(0);					
+					}
+				}
+				catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		textOrdemH2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textOrdemH2.setColumns(10);
 		textOrdemH2.setBounds(86, 22, 54, 20);
@@ -236,10 +308,43 @@ public class JanelaHarmonicos {
 		panelH3.add(panelOrdemH3);
 		
 		JSlider sliderOrdemH3 = new JSlider();
+		sliderOrdemH3.setValue(0);
+		sliderOrdemH3.setMaximum(15);
+		sliderOrdemH3.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				textOrdemH3.setText(Integer.toString(sliderOrdemH3.getValue()));
+			}
+		});		
 		sliderOrdemH3.setBounds(10, 19, 66, 26);
 		panelOrdemH3.add(sliderOrdemH3);
 		
 		textOrdemH3 = new JTextField();
+		textOrdemH3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(Integer.parseInt(textOrdemH3.getText()) <= sliderOrdemH3.getMaximum()) {
+						if(Integer.parseInt(textOrdemH3.getText()) >= sliderOrdemH3.getMinimum()) {
+							sliderOrdemH3.setValue(Integer.parseInt(textOrdemH3.getText()));
+						}
+						else {
+							textOrdemH3.setText("0");
+							sliderOrdemH3.setValue(0);
+						}
+					}
+					else {
+						textOrdemH3.setText("0");
+						sliderOrdemH3.setValue(0);					
+					}
+				}
+				catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		textOrdemH3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textOrdemH3.setColumns(10);
 		textOrdemH3.setBounds(86, 22, 54, 20);
@@ -295,10 +400,43 @@ public class JanelaHarmonicos {
 		panelH4.add(panelOrdemH4);
 		
 		JSlider sliderOrdemH4 = new JSlider();
+		sliderOrdemH4.setValue(0);
+		sliderOrdemH4.setMaximum(15);
+		sliderOrdemH4.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				textOrdemH4.setText(Integer.toString(sliderOrdemH4.getValue()));
+			}
+		});
 		sliderOrdemH4.setBounds(10, 19, 66, 26);
 		panelOrdemH4.add(sliderOrdemH4);
 		
 		textOrdemH4 = new JTextField();
+		textOrdemH4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(Integer.parseInt(textOrdemH4.getText()) <= sliderOrdemH4.getMaximum()) {
+						if(Integer.parseInt(textOrdemH4.getText()) >= sliderOrdemH4.getMinimum()) {
+							sliderOrdemH4.setValue(Integer.parseInt(textOrdemH4.getText()));
+						}
+						else {
+							textOrdemH4.setText("0");
+							sliderOrdemH4.setValue(0);
+						}
+					}
+					else {
+						textOrdemH4.setText("0");
+						sliderOrdemH4.setValue(0);					
+					}
+				}
+				catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		textOrdemH4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textOrdemH4.setColumns(10);
 		textOrdemH4.setBounds(86, 22, 54, 20);
@@ -356,10 +494,43 @@ public class JanelaHarmonicos {
 		panelH5.add(panelOrdemH5);
 		
 		JSlider sliderOrdemH5 = new JSlider();
+		sliderOrdemH5.setValue(0);
+		sliderOrdemH5.setMaximum(15);
+		sliderOrdemH5.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				textOrdemH5.setText(Integer.toString(sliderOrdemH5.getValue()));
+			}
+		});
 		sliderOrdemH5.setBounds(10, 19, 66, 26);
 		panelOrdemH5.add(sliderOrdemH5);
 		
 		textOrdemH5 = new JTextField();
+		textOrdemH5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(Integer.parseInt(textOrdemH5.getText()) <= sliderOrdemH5.getMaximum()) {
+						if(Integer.parseInt(textOrdemH5.getText()) >= sliderOrdemH5.getMinimum()) {
+							sliderOrdemH5.setValue(Integer.parseInt(textOrdemH5.getText()));
+						}
+						else {
+							textOrdemH5.setText("0");
+							sliderOrdemH5.setValue(0);
+						}
+					}
+					else {
+						textOrdemH5.setText("0");
+						sliderOrdemH5.setValue(0);					
+					}
+				}
+				catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		textOrdemH5.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textOrdemH5.setColumns(10);
 		textOrdemH5.setBounds(86, 22, 54, 20);
@@ -417,10 +588,43 @@ public class JanelaHarmonicos {
 		panelOrdemH6.add(panel_9);
 		
 		JSlider sliderOrdemH6 = new JSlider();
+		sliderOrdemH6.setValue(0);
+		sliderOrdemH6.setMaximum(15);
+		sliderOrdemH6.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				textOrdemH6.setText(Integer.toString(sliderOrdemH6.getValue()));
+			}
+		});
 		sliderOrdemH6.setBounds(10, 19, 66, 26);
 		panel_9.add(sliderOrdemH6);
 		
 		textOrdemH6 = new JTextField();
+		textOrdemH6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(Integer.parseInt(textOrdemH6.getText()) <= sliderOrdemH6.getMaximum()) {
+						if(Integer.parseInt(textOrdemH6.getText()) >= sliderOrdemH6.getMinimum()) {
+							sliderOrdemH6.setValue(Integer.parseInt(textOrdemH6.getText()));
+						}
+						else {
+							textOrdemH6.setText("0");
+							sliderOrdemH6.setValue(0);
+						}
+					}
+					else {
+						textOrdemH6.setText("0");
+						sliderOrdemH6.setValue(0);					
+					}
+				}
+				catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+
+				catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		textOrdemH6.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textOrdemH6.setColumns(10);
 		textOrdemH6.setBounds(86, 22, 54, 20);

@@ -170,6 +170,8 @@ public class JanelaDistorcaoHarmUC3 {
 		JSlider sliderNumHarm = new JSlider();
 		textNumHarm = new JTextField();
 		textNumHarm.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textNumHarm.setBounds(95, 24, 50, 22);
+		textNumHarm.setColumns(10);
 		textNumHarm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -196,6 +198,7 @@ public class JanelaDistorcaoHarmUC3 {
 				}
 			}
 		});
+		
 		JPanel panelBordaOrdem = new JPanel();
 		panelBordaOrdem.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Harm\u00F4nicos", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelBordaOrdem.setBounds(148, 296, 158, 59);
@@ -210,11 +213,9 @@ public class JanelaDistorcaoHarmUC3 {
 		sliderNumHarm.setValue(0);
 		sliderNumHarm.setMaximum(6);
 		sliderNumHarm.setBounds(6, 22, 79, 26);
-		panelNumHarm.add(sliderNumHarm);
 		
-		textNumHarm.setBounds(95, 24, 50, 22);
+		panelNumHarm.add(sliderNumHarm);		
 		panelNumHarm.add(textNumHarm);
-		textNumHarm.setColumns(10);
 				
 		JRadioButton rdbtnPar = new JRadioButton("Par");
 		rdbtnPar.setBounds(12, 24, 66, 23);

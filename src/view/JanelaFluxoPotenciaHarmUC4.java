@@ -331,5 +331,6 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		});
 		btnVoltar.setBounds(880, 600, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnVoltar);
+
 	}
 }
