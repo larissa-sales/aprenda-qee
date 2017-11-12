@@ -132,14 +132,32 @@ public class CalculosUC4 implements Calculo{
 	
 	private void calculaFormaOndaTensaoFund() {
 		formaOndaTensaoFund.clear();
+		double x = 0;
+		
+		while (x <= 0.1) {
+			formaOndaTensaoFund.add(ampV * Math.cos(w * x + Math.toRadians(angV)));
+			x += 0.0001;
+		}	
 	}
-
+	
 	private void calculaFormaOndaCorrenteHarm() {
 		formaOndaCorrenteHarm.clear();
+		double x = 0;
+		
+		while (x <= 0.1) {
+			formaOndaCorrenteHarm.add(ampV * Math.cos(w * x + Math.toRadians(angV)));
+			x += 0.0001;
+		}
 	}
 
 	private void calculaFormaOndaPotHarmInst() {
 		formaOndaPotHarmInst.clear();
+		double x = 0;
+		
+		while (x <= 0.1) {
+			formaOndaPotHarmInst.add(ampV * Math.cos(w * x + Math.toRadians(angV)));
+			x += 0.0001;
+		}
 		
 		
 	}
