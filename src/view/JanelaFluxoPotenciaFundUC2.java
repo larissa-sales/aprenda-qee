@@ -186,7 +186,8 @@ public class JanelaFluxoPotenciaFundUC2 {
 					graficoCorrente.setScores(calculosUC2.getFormaOndaCorrente());
 					graficoPotInst.setScores(calculosUC2.getFormaOndaPotInst());
 					
-				}catch(NumberFormatException e) {
+				}
+				catch(NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
 				}
 				catch(IllegalArgumentException e) {
@@ -283,6 +284,7 @@ public class JanelaFluxoPotenciaFundUC2 {
 		panelBordaGraficoPotInst.add(graficoPotInst);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVoltar.setBounds(880, 600, 90, 25);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {						

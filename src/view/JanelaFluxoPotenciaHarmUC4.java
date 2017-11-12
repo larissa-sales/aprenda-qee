@@ -81,11 +81,11 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		frmAprendaQEE.getContentPane().setLayout(null);
 		calculosUC4 = new CalculosUC4();
 		
-		JLabel lblFluxoPotHarmonico = new JLabel("Fluxo de Pot\u00EAncia Harm\u00F4nico");
-		lblFluxoPotHarmonico.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblFluxoPotHarmonico.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFluxoPotHarmonico.setBounds(359, 50, 330, 25);
-		frmAprendaQEE.getContentPane().add(lblFluxoPotHarmonico);
+		JLabel lblFluxoPotHarmonica = new JLabel("Fluxo de Pot\u00EAncia Harm\u00F4nica");
+		lblFluxoPotHarmonica.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblFluxoPotHarmonica.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFluxoPotHarmonica.setBounds(359, 50, 330, 25);
+		frmAprendaQEE.getContentPane().add(lblFluxoPotHarmonica);
 		
 		//painel de tensão
 		
@@ -216,8 +216,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 					textTpf.setText(String.format("%.2f", calculosUC4.getTpf()));
 					graficoTensao.setScores(calculosUC4.getFormaOndaTensaoFund());
 					graficoCorrenteHarm.setScores(calculosUC4.getFormaOndaCorrenteHarm());
-					graficoPotHarmInst.setScores(calculosUC4.getFormaOndaPotHarmInst());
-										
+					graficoPotHarmInst.setScores(calculosUC4.getFormaOndaPotHarmInst());										
 				}
 				catch(NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -240,7 +239,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		JPanel panelBordaGraficoTensao = new JPanel();
 		panelBordaGraficoTensao.setBounds(255, 108, 344, 182);
 		frmAprendaQEE.getContentPane().add(panelBordaGraficoTensao);
-		panelBordaGraficoTensao.setBorder(new TitledBorder(null, "Tens\u00E3o Fundamental (V)", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, null));
+		panelBordaGraficoTensao.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Tens\u00E3o Fundamental (V)", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, null));
 		panelBordaGraficoTensao.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		graficoTensao = new GraphPanel(new ArrayList<>());
@@ -293,7 +292,6 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		panelDados.add(textPotLiq);
 		
 		textPotDist = new JTextField();
-		textPotDist.setText("");
 		textPotDist.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textPotDist.setEditable(false);
 		textPotDist.setColumns(10);
@@ -324,6 +322,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		panelBordaGraficoPotHarmInst.add(graficoPotHarmInst);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {						
 				frmAprendaQEE.dispose();				

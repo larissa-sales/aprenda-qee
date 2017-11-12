@@ -119,7 +119,7 @@ public class JanelaDistorcaoHarmUC3 {
 		textAngV.setBounds(97, 53, 82, 22);
 		panelTensão.add(textAngV);
 		
-		//ação botão simular
+		//botão simular
 		
 		JButton btnSimular = new JButton("Simular");
 		btnSimular.addActionListener(new ActionListener() {
@@ -236,7 +236,7 @@ public class JanelaDistorcaoHarmUC3 {
 		btnSimularH.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				calculosUC3.setNumHarm(sliderNumHarm.getValue());
-				//calculosUC3.setIsHarmPar(isHarmPar);
+				calculosUC3.setIsHarmPar(true);
 				calculosUC3.calcular();
 				JanelaHarmonicos janela = new JanelaHarmonicos();
 				janela.NewScreen();
@@ -274,6 +274,7 @@ public class JanelaDistorcaoHarmUC3 {
 		//botão voltar
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {						
 				frmAprendaQEE.dispose();				
