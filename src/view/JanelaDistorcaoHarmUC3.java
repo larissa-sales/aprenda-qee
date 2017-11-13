@@ -22,11 +22,7 @@ import controller.CalculosUC3;
 
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.JTextField;
-import java.util.List;
-import java.awt.FlowLayout;
 import javax.swing.JTextArea;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeListener;
@@ -77,9 +73,8 @@ public class JanelaDistorcaoHarmUC3 {
 		frmAprendaQEE.setLocationRelativeTo(null);
 		frmAprendaQEE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmAprendaQEE.getContentPane().setLayout(null);
-		calculosUC3 = new CalculosUC3();
 		
-		
+
 		//titulo janela
 		
 		JLabel lblDistHarmonica = new JLabel("Distor\u00E7\u00E3o Harm\u00F4nica");
@@ -122,11 +117,13 @@ public class JanelaDistorcaoHarmUC3 {
 		//botão simular
 		
 		JButton btnSimular = new JButton("Simular");
+		JButton btnSimularH = new JButton("Definir Harm\u00F4nicos");
 		btnSimular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					calculosUC3.setAmpV(Double.parseDouble(textAmpV.getText()));
 					calculosUC3.setAngV(Double.parseDouble(textAngV.getText()));
+					calculosUC3.calcular();
 					graficoFund.setScores(calculosUC3.getFormaOndaFund());
 				}
 				catch(NumberFormatException e) {
@@ -138,6 +135,7 @@ public class JanelaDistorcaoHarmUC3 {
 				catch(NullPointerException e) {
 					JOptionPane.showMessageDialog(null, "Valor não informado", "Erro!", JOptionPane.ERROR_MESSAGE);
 				}
+				btnSimularH.setEnabled(true);
 			}
 		});
 		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -230,20 +228,35 @@ public class JanelaDistorcaoHarmUC3 {
 		rdbtnImpar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		
-		//botao simular harmonicos
+		//botão simular que recebe harmônicos
 		
-		JButton btnSimularH = new JButton("Simular");
+				JButton btnSimular2 = new JButton("Simular");
+				btnSimular2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+				btnSimular2.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						calculosUC3.calcular();
+						graficoDistRes.setScores(calculosUC3.getFormaOndaDistRes());
+					}
+				});
+				btnSimular2.setEnabled(false);
+				btnSimular2.setBounds(150, 509, 90, 25);
+				frmAprendaQEE.getContentPane().add(btnSimular2);
+		
+		//botao simular harmônicos
+		
+		btnSimularH.setEnabled(false);
 		btnSimularH.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				calculosUC3.setNumHarm(sliderNumHarm.getValue());
-				calculosUC3.setIsHarmPar(true);
+				calculosUC3.setNumHarm(Integer.parseInt(textNumHarm.getText()));
+				calculosUC3.setIsHarmPar(rdbtnPar.isSelected());
 				calculosUC3.calcular();
-				JanelaHarmonicos janela = new JanelaHarmonicos();
-				janela.NewScreen();
+				JanelaHarmonicos janela = new JanelaHarmonicos(calculosUC3);
+				janela.NewScreen(calculosUC3);
+				btnSimular2.setEnabled(true);
 			}
-		});
+		});		
 		btnSimularH.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnSimularH.setBounds(148, 444, 90, 25);
+		btnSimularH.setBounds(148, 444, 158, 25);
 		frmAprendaQEE.getContentPane().add(btnSimularH);
 		
 		
@@ -282,5 +295,6 @@ public class JanelaDistorcaoHarmUC3 {
 		});
 		btnVoltar.setBounds(880, 600, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnVoltar);
+		
 	}
 }
