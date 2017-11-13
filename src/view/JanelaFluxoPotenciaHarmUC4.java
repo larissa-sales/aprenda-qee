@@ -13,7 +13,6 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import controller.CalculosUC2;
 import controller.CalculosUC4;
 
 import javax.swing.border.EtchedBorder;
@@ -21,9 +20,7 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;

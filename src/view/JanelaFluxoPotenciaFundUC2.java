@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import net.miginfocom.swing.MigLayout;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
@@ -71,9 +70,10 @@ public class JanelaFluxoPotenciaFundUC2 {
 		frmAprendaQEE.setSize(1024, 700);
 		frmAprendaQEE.setLocationRelativeTo(null);
 		frmAprendaQEE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
-		calculosUC2 = new CalculosUC2();
 		frmAprendaQEE.getContentPane().setLayout(null);
+		calculosUC2 = new CalculosUC2();
+		
+		//título janela
 		
 		JLabel lblFluxoPotFund = new JLabel("Fluxo de Pot\u00EAncia Fundamental");
 		lblFluxoPotFund.setFont(new Font("Tahoma", Font.PLAIN, 20));
