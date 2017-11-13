@@ -112,6 +112,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAmpH1(double ampH1) {
+		if(ampH1 < 0 || ampH1 > 220) throw new IllegalArgumentException("Amplitude da Tensão deve estar entre 0 e 220");
 		this.ampH1 = ampH1;
 	}
 
@@ -122,6 +123,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAngH1(double angH1) {
+		if(angH1 < -180 || angH1 > 180) throw new IllegalArgumentException("Ângulo deve estar entre -180 e 180");
 		this.angH1 = angH1;
 	}
 
@@ -132,7 +134,10 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setOrdH1(int ordH1) {
-		this.ordH1 = ordH1;
+		if(isHarmonicoValido(ordH1))
+			this.ordH1 = ordH1;
+		else
+			throw new IllegalArgumentException("O valor do harmonico é inválido");
 	}
 
 
@@ -142,6 +147,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAmpH2(double ampH2) {
+		if(ampH2 < 0 || ampH2 > 220) throw new IllegalArgumentException("Amplitude da Tensão deve estar entre 0 e 220");
 		this.ampH2 = ampH2;
 	}
 
@@ -152,6 +158,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAngH2(double angH2) {
+		if(angH2 < -180 || angH2 > 180) throw new IllegalArgumentException("Ângulo deve estar entre -180 e 180");
 		this.angH2 = angH2;
 	}
 
@@ -162,7 +169,10 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setOrdH2(int ordH2) {
-		this.ordH2 = ordH2;
+		if(isHarmonicoValido(ordH2))
+			this.ordH2 = ordH2;
+		else
+			throw new IllegalArgumentException("O valor do harmonico é inválido");
 	}
 
 
@@ -172,6 +182,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAmpH3(double ampH3) {
+		if(ampH3 < 0 || ampH3 > 220) throw new IllegalArgumentException("Amplitude da Tensão deve estar entre 0 e 220");
 		this.ampH3 = ampH3;
 	}
 
@@ -182,6 +193,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAngH3(double angH3) {
+		if(angH3 < -180 || angH3 > 180) throw new IllegalArgumentException("Ângulo deve estar entre -180 e 180");
 		this.angH3 = angH3;
 	}
 
@@ -192,7 +204,10 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setOrdH3(int ordH3) {
-		this.ordH3 = ordH3;
+		if(isHarmonicoValido(ordH3))
+			this.ordH3 = ordH3;
+		else
+			throw new IllegalArgumentException("O valor do harmonico é inválido");
 	}
 
 
@@ -202,6 +217,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAmpH4(double ampH4) {
+		if(ampH4 < 0 || ampH4 > 220) throw new IllegalArgumentException("Amplitude da Tensão deve estar entre 0 e 220");
 		this.ampH4 = ampH4;
 	}
 
@@ -212,6 +228,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAngH4(double angH4) {
+		if(angH4 < -180 || angH4 > 180) throw new IllegalArgumentException("Ângulo deve estar entre -180 e 180");
 		this.angH4 = angH4;
 	}
 
@@ -222,7 +239,10 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setOrdH4(int ordH4) {
-		this.ordH4 = ordH4;
+		if(isHarmonicoValido(ordH4))
+			this.ordH4 = ordH4;
+		else
+			throw new IllegalArgumentException("O valor do harmonico é inválido");
 	}
 
 
@@ -232,6 +252,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAmpH5(double ampH5) {
+		if(ampH5 < 0 || ampH5 > 220) throw new IllegalArgumentException("Amplitude da Tensão deve estar entre 0 e 220");
 		this.ampH5 = ampH5;
 	}
 
@@ -242,6 +263,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAngH5(double angH5) {
+		if(angH5 < -180 || angH5 > 180) throw new IllegalArgumentException("Ângulo deve estar entre -180 e 180");
 		this.angH5 = angH5;
 	}
 
@@ -252,7 +274,10 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setOrdH5(int ordH5) {
-		this.ordH5 = ordH5;
+		if(isHarmonicoValido(ordH5))
+			this.ordH5 = ordH5;
+		else
+			throw new IllegalArgumentException("O valor do harmonico é inválido");
 	}
 
 
@@ -262,6 +287,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAmpH6(double ampH6) {
+		if(ampH6 < 0 || ampH6 > 220) throw new IllegalArgumentException("Amplitude da Tensão deve estar entre 0 e 220");
 		this.ampH6 = ampH6;
 	}
 
@@ -272,6 +298,7 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setAngH6(double angH6) {
+		if(angH6 < -180 || angH6 > 180) throw new IllegalArgumentException("Ângulo deve estar entre -180 e 180");
 		this.angH6 = angH6;
 	}
 
@@ -282,7 +309,10 @@ public class CalculosUC3 implements Calculo {
 
 
 	public void setOrdH6(int ordH6) {
-		this.ordH6 = ordH6;
+		if(isHarmonicoValido(ordH6))
+			this.ordH6 = ordH6;
+		else
+			throw new IllegalArgumentException("O valor do harmonico é inválido");
 	}
 
 	
@@ -442,5 +472,15 @@ public class CalculosUC3 implements Calculo {
 			formaOndaH6.add(ampH6 * Math.cos(ordH6 * w * x + Math.toRadians(angH6)));
 			x += 0.0001;
 		}
+	}
+	
+	private boolean isHarmonicoValido(int ordem) {
+		if(ordem%2 == 0 && isHarmPar) {
+			return true;
+		}
+		else if(ordem%2 == 1 && !isHarmPar)
+			return true;
+		return false;
+		
 	}
 }
