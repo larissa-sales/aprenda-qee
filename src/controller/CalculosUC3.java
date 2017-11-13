@@ -137,7 +137,7 @@ public class CalculosUC3 implements Calculo {
 		if(isHarmonicoValido(ordH1))
 			this.ordH1 = ordH1;
 		else
-			throw new IllegalArgumentException("O valor do harmonico é inválido");
+			throw new IllegalArgumentException("O valor da ordem harmônica é inválido");
 	}
 
 
@@ -172,7 +172,7 @@ public class CalculosUC3 implements Calculo {
 		if(isHarmonicoValido(ordH2))
 			this.ordH2 = ordH2;
 		else
-			throw new IllegalArgumentException("O valor do harmonico é inválido");
+			throw new IllegalArgumentException("O valor da ordem harmônica é inválido");
 	}
 
 
@@ -207,7 +207,7 @@ public class CalculosUC3 implements Calculo {
 		if(isHarmonicoValido(ordH3))
 			this.ordH3 = ordH3;
 		else
-			throw new IllegalArgumentException("O valor do harmonico é inválido");
+			throw new IllegalArgumentException("O valor da ordem harmônica é inválido");
 	}
 
 
@@ -242,7 +242,7 @@ public class CalculosUC3 implements Calculo {
 		if(isHarmonicoValido(ordH4))
 			this.ordH4 = ordH4;
 		else
-			throw new IllegalArgumentException("O valor do harmonico é inválido");
+			throw new IllegalArgumentException("O valor da ordem harmônica é inválido");
 	}
 
 
@@ -277,7 +277,7 @@ public class CalculosUC3 implements Calculo {
 		if(isHarmonicoValido(ordH5))
 			this.ordH5 = ordH5;
 		else
-			throw new IllegalArgumentException("O valor do harmonico é inválido");
+			throw new IllegalArgumentException("O valor da ordem harmônica é inválido");
 	}
 
 
@@ -312,7 +312,19 @@ public class CalculosUC3 implements Calculo {
 		if(isHarmonicoValido(ordH6))
 			this.ordH6 = ordH6;
 		else
-			throw new IllegalArgumentException("O valor do harmonico é inválido");
+			throw new IllegalArgumentException("O valor da ordem harmônica é inválido");
+	}
+	
+	
+	//validação
+	
+	private boolean isHarmonicoValido(int ordem) {
+		if(ordem%2 == 0 && isHarmPar) {
+			return true;
+		}
+		else if(ordem%2 == 1 && !isHarmPar)
+			return true;
+		return false;
 	}
 
 	
@@ -474,13 +486,4 @@ public class CalculosUC3 implements Calculo {
 		}
 	}
 	
-	private boolean isHarmonicoValido(int ordem) {
-		if(ordem%2 == 0 && isHarmPar) {
-			return true;
-		}
-		else if(ordem%2 == 1 && !isHarmPar)
-			return true;
-		return false;
-		
-	}
 }
