@@ -84,6 +84,7 @@ public class JanelaHarmonicos {
 	 */
 	private void initialize() {
 		frmHarm = new JFrame();
+		frmHarm.setResizable(false);
 		frmHarm.setSize(1024, 700);
 		frmHarm.setLocationRelativeTo(null);
 		frmHarm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

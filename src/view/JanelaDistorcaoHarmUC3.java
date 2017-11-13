@@ -72,9 +72,22 @@ public class JanelaDistorcaoHarmUC3 {
 		frmAprendaQEE.setSize(1024, 700);
 		frmAprendaQEE.setLocationRelativeTo(null);
 		frmAprendaQEE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frmAprendaQEE.getContentPane().setLayout(null);
+		frmAprendaQEE.getContentPane().setLayout(null);		
+		calculosUC3 = new CalculosUC3();
 		
-
+		
+		//botão que recebe valores de ordem harmônica
+		
+		JButton btnSimular2 = new JButton("Simular");
+		btnSimular2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSimular2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				calculosUC3.calcular();
+				graficoDistRes.setScores(calculosUC3.getFormaOndaDistRes());
+			}
+		});
+		
+		
 		//titulo janela
 		
 		JLabel lblDistHarmonica = new JLabel("Distor\u00E7\u00E3o Harm\u00F4nica");
@@ -228,21 +241,7 @@ public class JanelaDistorcaoHarmUC3 {
 		rdbtnImpar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		
-		//botão simular que recebe harmônicos
-		
-				JButton btnSimular2 = new JButton("Simular");
-				btnSimular2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-				btnSimular2.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						calculosUC3.calcular();
-						graficoDistRes.setScores(calculosUC3.getFormaOndaDistRes());
-					}
-				});
-				btnSimular2.setEnabled(false);
-				btnSimular2.setBounds(150, 509, 90, 25);
-				frmAprendaQEE.getContentPane().add(btnSimular2);
-		
-		//botao simular harmônicos
+		//botao simular harmonicos
 		
 		btnSimularH.setEnabled(false);
 		btnSimularH.addActionListener(new ActionListener() {
@@ -254,7 +253,7 @@ public class JanelaDistorcaoHarmUC3 {
 				janela.NewScreen(calculosUC3);
 				btnSimular2.setEnabled(true);
 			}
-		});		
+		});
 		btnSimularH.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSimularH.setBounds(148, 444, 158, 25);
 		frmAprendaQEE.getContentPane().add(btnSimularH);
@@ -296,5 +295,8 @@ public class JanelaDistorcaoHarmUC3 {
 		btnVoltar.setBounds(880, 600, 90, 25);
 		frmAprendaQEE.getContentPane().add(btnVoltar);
 		
+		btnSimular2.setEnabled(false);
+		btnSimular2.setBounds(150, 509, 90, 25);
+		frmAprendaQEE.getContentPane().add(btnSimular2);
 	}
 }
