@@ -86,7 +86,7 @@ public class CalculosUC3 implements Calculo {
 	}
 	
 	
-	public boolean isIsHarmPar() {
+	public boolean getIsHarmPar() {
 		return isHarmPar;
 	}
 
@@ -355,8 +355,27 @@ public class CalculosUC3 implements Calculo {
 	
 	
 	private void calculaFormaOndaDistRes() {
+		double soma = 0;
+		
 		formaOndaDistRes.clear();
-				
+		for(int i = 0; i < formaOndaH1.size(); i++) {
+			soma = 0;
+			switch(numHarm) {
+			case 6:
+				soma += formaOndaH6.get(i);
+			case 5:
+				soma += formaOndaH5.get(i);
+			case 4:
+				soma += formaOndaH4.get(i);
+			case 3:
+				soma += formaOndaH3.get(i);
+			case 2:
+				soma += formaOndaH2.get(i);
+			case 1:
+				soma += formaOndaH1.get(i);
+			}
+			formaOndaDistRes.add(formaOndaFund.get(i)+soma);
+		}
 	}
 
 	
@@ -365,7 +384,7 @@ public class CalculosUC3 implements Calculo {
 		double x = 0;
 		
 		while (x <= 0.1) {
-			formaOndaH1.add(ampH1 * Math.cos(w * x + Math.toRadians(angH1)));
+			formaOndaH1.add(ampH1 * Math.cos(ordH1 * w * x + Math.toRadians(angH1)));
 			x += 0.0001;
 		}
 	}
@@ -376,7 +395,7 @@ public class CalculosUC3 implements Calculo {
 		double x = 0;
 		
 		while (x <= 0.1) {
-			formaOndaH2.add(ampH2 * Math.cos(w * x + Math.toRadians(angH2)));
+			formaOndaH2.add(ampH2 * Math.cos(ordH2 * w * x + Math.toRadians(angH2)));
 			x += 0.0001;
 		}
 	}
@@ -387,7 +406,7 @@ public class CalculosUC3 implements Calculo {
 		double x = 0;
 		
 		while (x <= 0.1) {
-			formaOndaH3.add(ampH3 * Math.cos(w * x + Math.toRadians(angH3)));
+			formaOndaH3.add(ampH3 * Math.cos(ordH3 * w * x + Math.toRadians(angH3)));
 			x += 0.0001;
 		}
 	}
@@ -398,7 +417,7 @@ public class CalculosUC3 implements Calculo {
 		double x = 0;
 		
 		while (x <= 0.1) {
-			formaOndaH4.add(ampH4 * Math.cos(w * x + Math.toRadians(angH4)));
+			formaOndaH4.add(ampH4 * Math.cos(ordH4 * w * x + Math.toRadians(angH4)));
 			x += 0.0001;
 		}
 	}
@@ -409,7 +428,7 @@ public class CalculosUC3 implements Calculo {
 		double x = 0;
 		
 		while (x <= 0.1) {
-			formaOndaH5.add(ampH5 * Math.cos(w * x + Math.toRadians(angH5)));
+			formaOndaH5.add(ampH5 * Math.cos(ordH5 * w * x + Math.toRadians(angH5)));
 			x += 0.0001;
 		}
 	}
@@ -420,7 +439,7 @@ public class CalculosUC3 implements Calculo {
 		double x = 0;
 		
 		while (x <= 0.1) {
-			formaOndaH6.add(ampH6 * Math.cos(w * x + Math.toRadians(angH6)));
+			formaOndaH6.add(ampH6 * Math.cos(ordH6 * w * x + Math.toRadians(angH6)));
 			x += 0.0001;
 		}
 	}
