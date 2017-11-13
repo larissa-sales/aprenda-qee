@@ -1,14 +1,8 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
-import java.awt.GridLayout;
-import java.awt.Window;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -16,15 +10,7 @@ import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.FlowLayout;
-import java.awt.Component;
-import net.miginfocom.swing.MigLayout;
 import java.awt.Font;
-import java.awt.Frame;
 
 public class JanelaPrincipalUC1 extends JFrame {
 
