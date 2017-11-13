@@ -12,10 +12,8 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JSpinner;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeListener;
 
@@ -59,11 +57,11 @@ public class JanelaHarmonicos {
 	/**
 	 * Launch the application.
 	 */
-	public void NewScreen() {
+	public void NewScreen(CalculosUC3 calculosUC3) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaHarmonicos window = new JanelaHarmonicos();
+					JanelaHarmonicos window = new JanelaHarmonicos(calculosUC3);
 					window.frmHarm.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -75,7 +73,9 @@ public class JanelaHarmonicos {
 	/**
 	 * Create the application.
 	 */
-	public JanelaHarmonicos() {
+
+	public JanelaHarmonicos(CalculosUC3 calculosUC3) {
+		this.calculosHarm = calculosUC3;
 		initialize();
 	}
 
@@ -88,7 +88,6 @@ public class JanelaHarmonicos {
 		frmHarm.setLocationRelativeTo(null);
 		frmHarm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmHarm.getContentPane().setLayout(null);
-		calculosHarm = new CalculosUC3();
 		
 		JLabel lblHarmnicos = new JLabel("Harm\u00F4nicos");
 		lblHarmnicos.setHorizontalAlignment(SwingConstants.CENTER);
@@ -120,6 +119,7 @@ public class JanelaHarmonicos {
 		textAmpH1.setBounds(86, 18, 70, 22);
 		panelH1.add(textAmpH1);
 		
+		
 		textAngH1 = new JTextField();
 		textAngH1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAngH1.setColumns(10);
@@ -132,7 +132,8 @@ public class JanelaHarmonicos {
 		panelOrdemH1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Ordem Harm\u00F4nica", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelOrdemH1.setLayout(null);
 		
-		JSlider sliderOrdemH1 = new JSlider();		sliderOrdemH1.setMaximum(15);
+		JSlider sliderOrdemH1 = new JSlider();		
+		sliderOrdemH1.setMaximum(15);
 		sliderOrdemH1.setValue(0);
 		sliderOrdemH1.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
@@ -643,6 +644,7 @@ public class JanelaHarmonicos {
 		textOrdemH6.setBounds(86, 22, 54, 20);
 		panel_9.add(textOrdemH6);
 		
+		
 		//grafico h6
 		
 		JPanel panelFormaOndaH6 = new JPanel();
@@ -656,36 +658,73 @@ public class JanelaHarmonicos {
 		graficoH6.setBounds(6, 16, 315, 135);
 		graficoH6.setLayout(null);
 		
+		
+		//botão voltar
+		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frmHarm.dispose();
 			}
 		});
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnVoltar.setBounds(880, 600, 90, 25);
+		frmHarm.getContentPane().add(btnVoltar);
+		
+		
+		//botão simular
 		
 		JButton btnSimular = new JButton("Simular");
 		btnSimular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					calculosHarm.setAmpH1(Double.parseDouble(textAmpH1.getText()));
-					calculosHarm.setAngH1(Double.parseDouble(textAngH1.getText()));
-					calculosHarm.setAmpH2(Double.parseDouble(textAmpH2.getText()));
-					calculosHarm.setAngH2(Double.parseDouble(textAngH2.getText()));
-					calculosHarm.setAmpH3(Double.parseDouble(textAmpH3.getText()));
-					calculosHarm.setAngH3(Double.parseDouble(textAngH3.getText()));
-					calculosHarm.setAmpH4(Double.parseDouble(textAmpH4.getText()));
-					calculosHarm.setAngH4(Double.parseDouble(textAngH4.getText()));
-					calculosHarm.setAmpH5(Double.parseDouble(textAmpH5.getText()));
-					calculosHarm.setAngH5(Double.parseDouble(textAngH5.getText()));
-					calculosHarm.setAmpH6(Double.parseDouble(textAmpH6.getText()));
-					calculosHarm.setAngH6(Double.parseDouble(textAngH6.getText()));
+					switch (calculosHarm.getNumHarm()) {
+					case 6:
+						calculosHarm.setAmpH6(Double.parseDouble(textAmpH6.getText()));
+						calculosHarm.setAngH6(Double.parseDouble(textAngH6.getText()));
+						calculosHarm.setOrdH6(sliderOrdemH6.getValue());
+						
+					case 5:
+						calculosHarm.setAmpH5(Double.parseDouble(textAmpH5.getText()));
+						calculosHarm.setAngH5(Double.parseDouble(textAngH5.getText()));
+						calculosHarm.setOrdH5(sliderOrdemH5.getValue());
+					case 4:
+						calculosHarm.setAmpH4(Double.parseDouble(textAmpH4.getText()));
+						calculosHarm.setAngH4(Double.parseDouble(textAngH4.getText()));
+						calculosHarm.setOrdH4(sliderOrdemH4.getValue());
+						
+					case 3:
+						calculosHarm.setAmpH3(Double.parseDouble(textAmpH3.getText()));
+						calculosHarm.setAngH3(Double.parseDouble(textAngH3.getText()));
+						calculosHarm.setOrdH3(sliderOrdemH3.getValue());
+						
+					case 2:
+						calculosHarm.setAmpH2(Double.parseDouble(textAmpH2.getText()));
+						calculosHarm.setAngH2(Double.parseDouble(textAngH2.getText()));
+						calculosHarm.setOrdH2(sliderOrdemH2.getValue());
+						
+					case 1:
+						calculosHarm.setAmpH1(Double.parseDouble(textAmpH1.getText()));
+						calculosHarm.setAngH1(Double.parseDouble(textAngH1.getText()));
+						calculosHarm.setOrdH1(sliderOrdemH1.getValue());
+					}
 					calculosHarm.calcular();
-					graficoH1.setScores(calculosHarm.getFormaOndaH1());
-					graficoH2.setScores(calculosHarm.getFormaOndaH2());
-					graficoH3.setScores(calculosHarm.getFormaOndaH3());
-					graficoH4.setScores(calculosHarm.getFormaOndaH4());
-					graficoH5.setScores(calculosHarm.getFormaOndaH5());
-					graficoH6.setScores(calculosHarm.getFormaOndaH6());
+					
+					switch(calculosHarm.getNumHarm()) {
+					case 6:
+						graficoH6.setScores(calculosHarm.getFormaOndaH6());						
+					case 5:
+						graficoH5.setScores(calculosHarm.getFormaOndaH5());
+					case 4:
+						graficoH4.setScores(calculosHarm.getFormaOndaH4());
+					case 3:
+						graficoH3.setScores(calculosHarm.getFormaOndaH3());
+					case 2:
+						graficoH2.setScores(calculosHarm.getFormaOndaH2());
+					case 1:
+						graficoH1.setScores(calculosHarm.getFormaOndaH1());
+					}
+
 				}
 				catch(NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "Valor deve ser numérico", "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -701,8 +740,65 @@ public class JanelaHarmonicos {
 		btnSimular.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSimular.setBounds(459, 600, 90, 25);
 		frmHarm.getContentPane().add(btnSimular);
-		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnVoltar.setBounds(880, 600, 90, 25);
-		frmHarm.getContentPane().add(btnVoltar);
+
+		textAmpH1.setEnabled(false);
+		textAmpH2.setEnabled(false);
+		textAmpH3.setEnabled(false);
+		textAmpH4.setEnabled(false);
+		textAmpH5.setEnabled(false);
+		textAmpH6.setEnabled(false);
+		textAngH1.setEnabled(false);
+		textAngH2.setEnabled(false);
+		textAngH3.setEnabled(false);
+		textAngH4.setEnabled(false);
+		textAngH5.setEnabled(false);
+		textAngH6.setEnabled(false);
+		sliderOrdemH1.setEnabled(false);
+		sliderOrdemH2.setEnabled(false);
+		sliderOrdemH3.setEnabled(false);
+		sliderOrdemH4.setEnabled(false);
+		sliderOrdemH5.setEnabled(false);
+		sliderOrdemH6.setEnabled(false);
+		textOrdemH1.setEnabled(false);
+		textOrdemH2.setEnabled(false);
+		textOrdemH3.setEnabled(false);
+		textOrdemH4.setEnabled(false);
+		textOrdemH5.setEnabled(false);
+		textOrdemH6.setEnabled(false);
+		
+		//recebe número de harmônicos
+		
+		switch (calculosHarm.getNumHarm()) {
+		case 6:
+			textAmpH6.setEnabled(true);
+			sliderOrdemH6.setEnabled(true);
+			textOrdemH6.setEnabled(true);
+			textAngH6.setEnabled(true);
+		case 5:
+			textAmpH5.setEnabled(true);
+			sliderOrdemH5.setEnabled(true);
+			textOrdemH5.setEnabled(true);
+			textAngH5.setEnabled(true);
+		case 4:
+			textAmpH4.setEnabled(true);
+			sliderOrdemH4.setEnabled(true);
+			textOrdemH4.setEnabled(true);
+			textAngH4.setEnabled(true);
+		case 3:
+			textAmpH3.setEnabled(true);
+			sliderOrdemH3.setEnabled(true);
+			textOrdemH3.setEnabled(true);
+			textAngH3.setEnabled(true);
+		case 2:
+			textAmpH2.setEnabled(true);
+			sliderOrdemH2.setEnabled(true);
+			textOrdemH2.setEnabled(true);
+			textAngH2.setEnabled(true);
+		case 1:
+			textAmpH1.setEnabled(true);
+			sliderOrdemH1.setEnabled(true);
+			textOrdemH1.setEnabled(true);
+			textAngH1.setEnabled(true);		
+		}
 	}
 }
