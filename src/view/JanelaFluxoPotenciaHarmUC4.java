@@ -20,7 +20,6 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import javax.swing.JSpinner;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
@@ -32,7 +31,6 @@ public class JanelaFluxoPotenciaHarmUC4 {
 	private JTextField textAngV;
 	private JTextField textAmpI;
 	private JTextField textAngI;
-	private JSpinner sliderOrdemH;
 	private GraphPanel graficoTensao;
 	private GraphPanel graficoCorrenteHarm;
 	private GraphPanel graficoPotHarmInst;

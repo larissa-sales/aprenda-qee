@@ -38,7 +38,6 @@ public class JanelaDistorcaoHarmUC3 {
 	private JTextField textAmpV;
 	private JTextField textAngV;
 	private JTextField textNumHarm;
-	//private JTextArea txtrFourier;
 
 	/**
 	 * Launch the application.
@@ -85,7 +84,6 @@ public class JanelaDistorcaoHarmUC3 {
 			public void actionPerformed(ActionEvent arg0) {
 				calculosUC3.calcular();
 				graficoDistRes.setScores(calculosUC3.setFormaOndaDistRes());
-				//txtrFourier.setText(String.format("%.2f", calculosUC3.getFourier()));
 			}
 		});
 		

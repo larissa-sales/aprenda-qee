@@ -32,39 +32,32 @@ public class CalculosUC2 implements Calculo{
 		return valor.getAmpV();
 	}
 
-
 	public void setAmpV(double ampV) {
 		if(ampV < 0 || ampV > 220) throw new IllegalArgumentException("Amplitude da Tensão deve estar entre 0 e 220");
 		valor.setAmpV(ampV);
 	}
 
-
 	public double getAngV() {
 		return valor.getAngV();
 	}
-
 
 	public void setAngV(double angV) {
 		if(angV < -180 || angV > 180) throw new IllegalArgumentException("Ângulo deve estar entre -180 e 180");
 		valor.setAngV(angV);
 	}
 
-
 	public double getAmpI() {
 		return valor.getAmpI();
 	}
-
 
 	public void setAmpI(double ampI) {
 		if(ampI < 0 || ampI > 100) throw new IllegalArgumentException("Amplitude da Corrente deve estar entre 0 e 100");
 		valor.setAmpI(ampI);
 	}
 
-
 	public double getAngI() {
 		return valor.getAngI();
 	}
-
 
 	public void setAngI(double angI) {
 		if(angI < -180 || angI > 180) throw new IllegalArgumentException("Ângulo deve estar entre -180 e 180");
@@ -78,16 +71,13 @@ public class CalculosUC2 implements Calculo{
 		return valor.getPotAtiva();
 	}
 
-
 	public double getPotReativa() {
 		return valor.getPotReativa();
 	}
 
-
 	public double getPotAparente() {
 		return valor.getPotAparente();
 	}
-
 
 	public double getFatorPot() {
 		return valor.getFatorPot();
@@ -99,11 +89,9 @@ public class CalculosUC2 implements Calculo{
 		return valor.getFormaOndaTensao();
 	}
 	
-	
 	public List<Double> getFormaOndaCorrente() {
 		return valor.getFormaOndaCorrente();
 	}
-	
 	
 	public List<Double> getFormaOndaPotInst() {
 		return valor.getFormaOndaPotInst();
@@ -116,16 +104,13 @@ public class CalculosUC2 implements Calculo{
 		valor.setPotAtiva(valor.getAmpV() * valor.getAmpI() * Math.cos(Math.toRadians(valor.getAngV() - valor.getAngI())));
 	}
 
-
 	private void setPotReativa() {
 		valor.setPotReativa(valor.getAmpV() * valor.getAmpI() * Math.sin(Math.toRadians(valor.getAngV() - valor.getAngI())));
 	}
 
-
 	private void setPotAparente() {
 		valor.setPotAparente(valor.getAmpV() * valor.getAmpI());
 	}
-
 
 	private void setFatorPot() {
 		valor.setFatorPot(Math.cos(Math.toRadians(valor.getAngV() - valor.getAngI())));
@@ -161,7 +146,7 @@ public class CalculosUC2 implements Calculo{
 	}
 
 	private void setFormaOndaPotInst() {
-		double x;
+		double x = 0;
 		int aux;
 		
 		List<Double> formaOndaPotInst = new ArrayList<>();
