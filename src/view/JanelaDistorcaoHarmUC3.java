@@ -84,7 +84,7 @@ public class JanelaDistorcaoHarmUC3 {
 		btnSimular2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				calculosUC3.calcular();
-				graficoDistRes.setScores(calculosUC3.getFormaOndaDistRes());
+				graficoDistRes.setScores(calculosUC3.setFormaOndaDistRes());
 				//txtrFourier.setText(String.format("%.2f", calculosUC3.getFourier()));
 			}
 		});

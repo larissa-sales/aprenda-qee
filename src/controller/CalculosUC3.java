@@ -447,31 +447,30 @@ public class CalculosUC3 implements Calculo {
 	}
 	
 	
-	private void setFormaOndaDistRes() {
+	public List<Double> setFormaOndaDistRes() {
 		List<Double> formaOndaDistRes = new ArrayList<>();
 		formaOndaDistRes.clear();
 		
 		double soma = 0;
-		int i;
+		int aux;
 		
-		for(i = 0; i < getFormaOndaH1().size(); i++) {
-			soma = 0;
-			switch(getNumHarm()) {
+		for(aux = 0; aux < valor.getFormaOndaH1().size(); aux++) {			
+			switch(valor.getNumHarm()) {
 			case 6:
-				soma += getFormaOndaH6().get(i);
+				soma += valor.getFormaOndaH6().get(aux);
 			case 5:
-				soma += getFormaOndaH5().get(i);
+				soma += valor.getFormaOndaH5().get(aux);
 			case 4:
-				soma += getFormaOndaH4().get(i);
+				soma += valor.getFormaOndaH4().get(aux);
 			case 3:
-				soma += getFormaOndaH3().get(i);
+				soma += valor.getFormaOndaH3().get(aux);
 			case 2:
-				soma += getFormaOndaH2().get(i);
+				soma += valor.getFormaOndaH2().get(aux);
 			case 1:
-				soma += getFormaOndaH1().get(i);
+				soma += valor.getFormaOndaH1().get(aux);
 			}
-			formaOndaDistRes.add(getFormaOndaFund().get(i) + soma);
+			formaOndaDistRes.add(valor.getFormaOndaFund().get(aux) + soma);
 		}
-		valor.setFormaOndaDistRes(formaOndaDistRes);
+		return formaOndaDistRes;
 	}
 }
