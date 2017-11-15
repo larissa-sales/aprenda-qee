@@ -3,173 +3,174 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.ValoresUC2;
+
 public class CalculosUC2 implements Calculo{
 	private final double w = 2*Math.PI*60;
 	
-	private double ampV;
-	private double angV;
-	private double ampI;
-	private double angI;
-	private double potAtiva;
-	private double potReativa;
-	private double potAparente;
-	private double fatorPot;	
-	private List<Double> formaOndaTensao;
-	private List<Double> formaOndaCorrente;
-	private List<Double> formaOndaPotInst;
+	ValoresUC2 valor; 
 	
 	public CalculosUC2() {
-		formaOndaTensao = new ArrayList<>();
-		formaOndaCorrente = new ArrayList<>();
-		formaOndaPotInst = new ArrayList<>();
+		valor = new ValoresUC2();
 	}
 	
 	@Override
 	public void calcular() {
-		calculaFatorPot();
-		calculaPotAparente();
-		calculaPotReativa();
-		calculaPotAtiva();
-		calculaFormaOndaTensao();
-		calculaFormaOndaCorrente();
-		calculaFormaOndaPotInst();
+		setFatorPot();
+		setPotAparente();
+		setPotReativa();
+		setPotAtiva();
+		setFormaOndaTensao();
+		setFormaOndaCorrente();
+		setFormaOndaPotInst();
 	}
 
 	
-	//entradas
+	//validação entradas
 
 	public double getAmpV() {
-		return ampV;
+		return valor.getAmpV();
 	}
 
 
 	public void setAmpV(double ampV) {
 		if(ampV < 0 || ampV > 220) throw new IllegalArgumentException("Amplitude da Tensão deve estar entre 0 e 220");
-		this.ampV = ampV;
+		valor.setAmpV(ampV);
 	}
 
 
 	public double getAngV() {
-		return angV;
+		return valor.getAngV();
 	}
 
 
 	public void setAngV(double angV) {
 		if(angV < -180 || angV > 180) throw new IllegalArgumentException("Ângulo deve estar entre -180 e 180");
-		this.angV = angV;
+		valor.setAngV(angV);
 	}
 
 
 	public double getAmpI() {
-		return ampI;
+		return valor.getAmpI();
 	}
 
 
 	public void setAmpI(double ampI) {
 		if(ampI < 0 || ampI > 100) throw new IllegalArgumentException("Amplitude da Corrente deve estar entre 0 e 100");
-		this.ampI = ampI;
+		valor.setAmpI(ampI);
 	}
 
 
 	public double getAngI() {
-		return angI;
+		return valor.getAngI();
 	}
 
 
 	public void setAngI(double angI) {
 		if(angI < -180 || angI > 180) throw new IllegalArgumentException("Ângulo deve estar entre -180 e 180");
-		this.angI = angI;
+		valor.setAngI(angI);
 	}
 
 	
 	//saídas
 	
 	public double getPotAtiva() {
-		return potAtiva;
+		return valor.getPotAtiva();
 	}
 
 
 	public double getPotReativa() {
-		return potReativa;
+		return valor.getPotReativa();
 	}
 
 
 	public double getPotAparente() {
-		return potAparente;
+		return valor.getPotAparente();
 	}
 
 
 	public double getFatorPot() {
-		return fatorPot;
+		return valor.getFatorPot();
+	}
+	
+	//graficos
+	
+	public List<Double> getFormaOndaTensao() {
+		return valor.getFormaOndaTensao();
+	}
+	
+	
+	public List<Double> getFormaOndaCorrente() {
+		return valor.getFormaOndaCorrente();
+	}
+	
+	
+	public List<Double> getFormaOndaPotInst() {
+		return valor.getFormaOndaPotInst();
 	}
 	
 	
 	//calculos saídas
 	
-	private void calculaPotAtiva() {
-		potAtiva = ampV * ampI * Math.cos(Math.toRadians(angV - angI));
+	private void setPotAtiva() {
+		valor.setPotAtiva(valor.getAmpV() * valor.getAmpI() * Math.cos(Math.toRadians(valor.getAngV() - valor.getAngI())));
 	}
 
 
-	private void calculaPotReativa() {
-		potReativa = ampV * ampI * Math.sin(Math.toRadians(angV - angI));;
+	private void setPotReativa() {
+		valor.setPotReativa(valor.getAmpV() * valor.getAmpI() * Math.sin(Math.toRadians(valor.getAngV() - valor.getAngI())));
 	}
 
 
-	private void calculaPotAparente() {
-		potAparente = ampV * ampI;
+	private void setPotAparente() {
+		valor.setPotAparente(valor.getAmpV() * valor.getAmpI());
 	}
 
 
-	private void calculaFatorPot() {
-		fatorPot = Math.cos(Math.toRadians(angV - angI));
-	}
-	
-	
-	//gráficos
-	
-	public List<Double> getFormaOndaTensao() {
-		return formaOndaTensao;
-	}
-
-	public List<Double> getFormaOndaCorrente() {
-		return formaOndaCorrente;
-	}
-
-	public List<Double> getFormaOndaPotInst() {
-		return formaOndaPotInst;
+	private void setFatorPot() {
+		valor.setFatorPot(Math.cos(Math.toRadians(valor.getAngV() - valor.getAngI())));
 	}
 	
 	
 	//cálculos gráficos
 	
-	private void calculaFormaOndaTensao() {
+	private void setFormaOndaTensao() {
 		double x = 0;
+		
+		List<Double> formaOndaTensao = new ArrayList<>();
 		formaOndaTensao.clear();
 		
 		while (x <= 0.1) {
-			formaOndaTensao.add(ampV * Math.cos(w * x + Math.toRadians(angV)));
+			formaOndaTensao.add(valor.getAmpV() * Math.cos(w * x + Math.toRadians(valor.getAngV())));
 			x += 0.0001;
 		}
+		valor.setFormaOndaTensao(formaOndaTensao);
 	}
 
-	private void calculaFormaOndaCorrente() {
+	private void setFormaOndaCorrente() {
 		double x = 0;
+		
+		List<Double> formaOndaCorrente = new ArrayList<>();
 		formaOndaCorrente.clear();
 		
 		while (x <= 0.1) {
-			formaOndaCorrente.add(ampI * Math.cos(w * x + Math.toRadians(angI)));
+			formaOndaCorrente.add(valor.getAmpI() * Math.cos(w * x + Math.toRadians(valor.getAngI())));
 			x += 0.0001;
-		}		
+		}
+		valor.setFormaOndaCorrente(formaOndaCorrente);
 	}
 
-	private void calculaFormaOndaPotInst() {
-		formaOndaPotInst.clear();
+	private void setFormaOndaPotInst() {
+		double x;
 		int aux;
 		
-		for(aux = 0; aux < formaOndaTensao.size(); aux++) {
-			formaOndaPotInst.add(formaOndaTensao.get(aux) * formaOndaCorrente.get(aux));
-		}
+		List<Double> formaOndaPotInst = new ArrayList<>();
+		formaOndaPotInst.clear();
 		
+		for(aux = 0; aux < valor.getFormaOndaCorrente().size(); aux++) {
+			x = valor.getFormaOndaCorrente().get(aux) * valor.getFormaOndaTensao().get(aux);
+			formaOndaPotInst.add(x);
+		}
+		valor.setFormaOndaPotInst(formaOndaPotInst);
 	}
 }
