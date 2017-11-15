@@ -1,4 +1,3 @@
-package model;
 import java.awt.EventQueue;
 
 import view.JanelaPrincipalUC1;
