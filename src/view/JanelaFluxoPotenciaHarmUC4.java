@@ -211,7 +211,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 					textPotLiq.setText(String.format("%.2f", calculosUC4.getPotLiq()));
 					textPotDist.setText(String.format("%.2f", calculosUC4.getPotDist()));
 					textTpf.setText(String.format("%.2f", calculosUC4.getTpf()));
-					graficoTensao.setScores(calculosUC4.getFormaOndaTensaoFund());
+					graficoTensao.setScores(calculosUC4.getFormaOndaTensao());
 					graficoCorrenteHarm.setScores(calculosUC4.getFormaOndaCorrenteHarm());
 					graficoPotHarmInst.setScores(calculosUC4.getFormaOndaPotHarmInst());										
 				}
