@@ -40,7 +40,7 @@ public class JanelaPrincipalUC1 extends JFrame {
 		btnDistorcaoHarmonica.setBounds(127, 206, 230, 25);
 		btnDistorcaoHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JanelaDistorcaoHarmUC3 janela = new JanelaDistorcaoHarmUC3();
+				DistorcaoHarmonicaUC3 janela = new DistorcaoHarmonicaUC3();
 				janela.NewScreen();
 			}
 		});
@@ -49,7 +49,7 @@ public class JanelaPrincipalUC1 extends JFrame {
 		btnPotenciaFundamental.setBounds(127, 129, 230, 25);
 		btnPotenciaFundamental.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JanelaFluxoPotenciaFundUC2 janela = new JanelaFluxoPotenciaFundUC2();
+				FluxoPotenciaFundamentalUC2 janela = new FluxoPotenciaFundamentalUC2();
 				janela.NewScreen();
 			}
 		});
@@ -60,7 +60,7 @@ public class JanelaPrincipalUC1 extends JFrame {
 		btnPotenciaHarmonica.setBounds(127, 283, 230, 25);
 		btnPotenciaHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JanelaFluxoPotenciaHarmUC4 janela = new JanelaFluxoPotenciaHarmUC4();
+				FluxoPotenciaHarmonicoUC4 janela = new FluxoPotenciaHarmonicoUC4();
 				janela.NewScreen();
 			}
 		});

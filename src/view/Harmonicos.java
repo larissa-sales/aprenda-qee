@@ -25,7 +25,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-public class JanelaHarmonicos {
+public class Harmonicos {
 
 	private JFrame frmHarm;
 	private CalculosUC3 calculosHarm;
@@ -61,7 +61,7 @@ public class JanelaHarmonicos {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaHarmonicos window = new JanelaHarmonicos(calculosUC3);
+					Harmonicos window = new Harmonicos(calculosUC3);
 					window.frmHarm.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -74,7 +74,7 @@ public class JanelaHarmonicos {
 	 * Create the application.
 	 */
 
-	public JanelaHarmonicos(CalculosUC3 calculosUC3) {
+	public Harmonicos(CalculosUC3 calculosUC3) {
 		this.calculosHarm = calculosUC3;
 		initialize();
 	}

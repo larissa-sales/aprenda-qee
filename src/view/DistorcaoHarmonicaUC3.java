@@ -28,7 +28,7 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 
-public class JanelaDistorcaoHarmUC3 {
+public class DistorcaoHarmonicaUC3 {
 	private final ButtonGroup buttonGroupHarm = new ButtonGroup();
 	
 	private JFrame frmAprendaQEE;
@@ -46,7 +46,7 @@ public class JanelaDistorcaoHarmUC3 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaDistorcaoHarmUC3 window = new JanelaDistorcaoHarmUC3();
+					DistorcaoHarmonicaUC3 window = new DistorcaoHarmonicaUC3();
 					window.frmAprendaQEE.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +58,7 @@ public class JanelaDistorcaoHarmUC3 {
 	/**
 	 * Create the application.
 	 */
-	public JanelaDistorcaoHarmUC3() {
+	public DistorcaoHarmonicaUC3() {
 		initialize();
 	}
 
@@ -249,7 +249,7 @@ public class JanelaDistorcaoHarmUC3 {
 				calculosUC3.setNumHarm(Integer.parseInt(textNumHarm.getText()));
 				calculosUC3.setIsHarmPar(rdbtnPar.isSelected());
 				calculosUC3.calcular();
-				JanelaHarmonicos janela = new JanelaHarmonicos(calculosUC3);
+				Harmonicos janela = new Harmonicos(calculosUC3);
 				janela.NewScreen(calculosUC3);
 				btnSimular2.setEnabled(true);
 			}

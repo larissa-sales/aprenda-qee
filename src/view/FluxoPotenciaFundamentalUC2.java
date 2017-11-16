@@ -21,7 +21,7 @@ import controller.CalculosUC2;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 
-public class JanelaFluxoPotenciaFundUC2 {
+public class FluxoPotenciaFundamentalUC2 {
 
 	private JFrame frmAprendaQEE;
 	private JTextField textAmpV;
@@ -44,7 +44,7 @@ public class JanelaFluxoPotenciaFundUC2 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaFluxoPotenciaFundUC2 window = new JanelaFluxoPotenciaFundUC2();
+					FluxoPotenciaFundamentalUC2 window = new FluxoPotenciaFundamentalUC2();
 					window.frmAprendaQEE.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +56,7 @@ public class JanelaFluxoPotenciaFundUC2 {
 	/**
 	 * Create the application.
 	 */
-	public JanelaFluxoPotenciaFundUC2() {
+	public FluxoPotenciaFundamentalUC2() {
 		initialize();
 	}
 
@@ -161,7 +161,7 @@ public class JanelaFluxoPotenciaFundUC2 {
 		panelBordaGraficoCorrente.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Corrente (I)", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelBordaGraficoCorrente.setBounds(609, 108, 344, 182);
 		frmAprendaQEE.getContentPane().add(panelBordaGraficoCorrente);
-		panelBordaGraficoCorrente.setLayout(new GridLayout(1, 0, 0, 0));
+		panelBordaGraficoCorrente.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		graficoCorrente = new GraphPanel(new ArrayList<>());
 		panelBordaGraficoCorrente.add(graficoCorrente);
@@ -278,7 +278,7 @@ public class JanelaFluxoPotenciaFundUC2 {
 		panelBordaGraficoPotInst.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Potência Instantânea", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelBordaGraficoPotInst.setBounds(344, 344, 344, 203);
 		frmAprendaQEE.getContentPane().add(panelBordaGraficoPotInst);
-		panelBordaGraficoPotInst.setLayout(new GridLayout(1, 0, 0, 0));
+		panelBordaGraficoPotInst.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		graficoPotInst = new GraphPanel(new ArrayList<>());
 		panelBordaGraficoPotInst.add(graficoPotInst);

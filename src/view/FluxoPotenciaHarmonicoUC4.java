@@ -24,7 +24,7 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 
-public class JanelaFluxoPotenciaHarmUC4 {
+public class FluxoPotenciaHarmonicoUC4 {
 
 	private JFrame frmAprendaQEE;
 	private JTextField textAmpV;
@@ -47,7 +47,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JanelaFluxoPotenciaHarmUC4 window = new JanelaFluxoPotenciaHarmUC4();
+					FluxoPotenciaHarmonicoUC4 window = new FluxoPotenciaHarmonicoUC4();
 					window.frmAprendaQEE.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +59,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 	/**
 	 * Create the application.
 	 */
-	public JanelaFluxoPotenciaHarmUC4() {
+	public FluxoPotenciaHarmonicoUC4() {
 		initialize();
 	}
 
@@ -235,7 +235,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		panelBordaGraficoTensao.setBounds(255, 108, 344, 182);
 		frmAprendaQEE.getContentPane().add(panelBordaGraficoTensao);
 		panelBordaGraficoTensao.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Tens\u00E3o Fundamental (V)", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, null));
-		panelBordaGraficoTensao.setLayout(new GridLayout(1, 0, 0, 0));
+		panelBordaGraficoTensao.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		graficoTensao = new GraphPanel(new ArrayList<>());
 		panelBordaGraficoTensao.add(graficoTensao);
@@ -247,7 +247,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		panelBordaGraficoCorrenteHarm.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Corrente Harm\u00F4nica (I)", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelBordaGraficoCorrenteHarm.setBounds(609, 108, 344, 182);
 		frmAprendaQEE.getContentPane().add(panelBordaGraficoCorrenteHarm);
-		panelBordaGraficoCorrenteHarm.setLayout(new GridLayout(1, 0, 0, 0));
+		panelBordaGraficoCorrenteHarm.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		graficoCorrenteHarm = new GraphPanel(new ArrayList<>());
 		panelBordaGraficoCorrenteHarm.add(graficoCorrenteHarm);
@@ -311,7 +311,7 @@ public class JanelaFluxoPotenciaHarmUC4 {
 		panelBordaGraficoPotHarmInst.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Pot\u00EAncia Harm\u00F4nica Instant\u00E2nea", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panelBordaGraficoPotHarmInst.setBounds(403, 349, 550, 203);
 		frmAprendaQEE.getContentPane().add(panelBordaGraficoPotHarmInst);
-		panelBordaGraficoPotHarmInst.setLayout(new GridLayout(1, 0, 0, 0));
+		panelBordaGraficoPotHarmInst.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		graficoPotHarmInst = new GraphPanel(new ArrayList<>());
 		panelBordaGraficoPotHarmInst.add(graficoPotHarmInst);
