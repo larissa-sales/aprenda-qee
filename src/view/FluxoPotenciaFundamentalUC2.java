@@ -73,7 +73,7 @@ public class FluxoPotenciaFundamentalUC2 {
 		frmAprendaQEE.getContentPane().setLayout(null);
 		calculosUC2 = new CalculosUC2();
 		
-		//título janela
+		//titulo janela
 		
 		JLabel lblFluxoPotFund = new JLabel("Fluxo de Pot\u00EAncia Fundamental");
 		lblFluxoPotFund.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -143,7 +143,7 @@ public class FluxoPotenciaFundamentalUC2 {
 		panelCorrente.add(textAngI);
 		
 		
-		//grafico de tensão
+		//grafico de tensao
 		
 		JPanel panelBordaGraficoTensao = new JPanel();
 		panelBordaGraficoTensao.setBounds(255, 108, 344, 182);
@@ -167,7 +167,7 @@ public class FluxoPotenciaFundamentalUC2 {
 		panelBordaGraficoCorrente.add(graficoCorrente);
 		
 		
-		//botão simular
+		//botao simular
 		
 		JButton btnSimular = new JButton("Simular");
 		btnSimular.addActionListener(new ActionListener() {

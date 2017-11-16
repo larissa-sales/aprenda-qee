@@ -76,7 +76,7 @@ public class DistorcaoHarmonicaUC3 {
 		calculosUC3 = new CalculosUC3();
 		
 		
-		//botão que recebe valores de ordem harmônica
+		//botao que recebe valores de ordem harmonica
 		
 		JButton btnSimular2 = new JButton("Simular");
 		btnSimular2.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -97,37 +97,37 @@ public class DistorcaoHarmonicaUC3 {
 		frmAprendaQEE.getContentPane().add(lblDistHarmonica);
 		
 		
-		//entradas painel tensão
+		//entradas painel tensao
 		
-		JPanel panelTensão = new JPanel();
-		panelTensão.setLayout(null);
-		panelTensão.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Tens\u00E3o", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panelTensão.setBounds(148, 96, 189, 83);
-		frmAprendaQEE.getContentPane().add(panelTensão);
+		JPanel panelTensao = new JPanel();
+		panelTensao.setLayout(null);
+		panelTensao.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Tens\u00E3o", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
+		panelTensao.setBounds(148, 96, 189, 83);
+		frmAprendaQEE.getContentPane().add(panelTensao);
 		
 		JLabel lblAmpV = new JLabel("Amplitude");
 		lblAmpV.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblAmpV.setBounds(6, 17, 70, 25);
-		panelTensão.add(lblAmpV);
+		panelTensao.add(lblAmpV);
 		
 		JLabel lblAngV = new JLabel("\u00C2ngulo");
 		lblAngV.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblAngV.setBounds(6, 52, 70, 25);
-		panelTensão.add(lblAngV);
+		panelTensao.add(lblAngV);
 		
 		textAmpV = new JTextField();
 		textAmpV.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAmpV.setColumns(10);
 		textAmpV.setBounds(97, 18, 82, 22);
-		panelTensão.add(textAmpV);
+		panelTensao.add(textAmpV);
 		
 		textAngV = new JTextField();
 		textAngV.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textAngV.setColumns(10);
 		textAngV.setBounds(97, 53, 82, 22);
-		panelTensão.add(textAngV);
+		panelTensao.add(textAngV);
 		
-		//botão simular
+		//botao simular
 		
 		JButton btnSimular = new JButton("Simular");
 		JButton btnSimularH = new JButton("Definir Harm\u00F4nicos");
@@ -283,7 +283,7 @@ public class DistorcaoHarmonicaUC3 {
 		txtrFourier.setLineWrap(true);
 		
 		
-		//botão voltar
+		//botao voltar
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
