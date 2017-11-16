@@ -37,7 +37,7 @@ public class JanelaPrincipalUC1 extends JFrame {
 		contentPane.add(lblEscolhaUmaSimulao);
 		
 		JButton btnPotenciaFundamental = new JButton("Fluxo de Pot\u00EAncia Fundamental");
-		btnPotenciaFundamental.setBounds(127, 129, 230, 25);
+		btnPotenciaFundamental.setBounds(112, 129, 260, 25);
 		btnPotenciaFundamental.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FluxoPotenciaFundamentalUC2 janela = new FluxoPotenciaFundamentalUC2();
@@ -49,7 +49,7 @@ public class JanelaPrincipalUC1 extends JFrame {
 		
 		
 		JButton btnDistorcaoHarmonica = new JButton("Distor\u00E7\u00E3o Harm\u00F4nica");
-		btnDistorcaoHarmonica.setBounds(127, 206, 230, 25);
+		btnDistorcaoHarmonica.setBounds(112, 206, 260, 25);
 		btnDistorcaoHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DistorcaoHarmonicaUC3 janela = new DistorcaoHarmonicaUC3();
@@ -61,7 +61,7 @@ public class JanelaPrincipalUC1 extends JFrame {
 		
 	
 		JButton btnPotenciaHarmonica = new JButton("Fluxo de Pot\u00EAncia Harm\u00F4nica");
-		btnPotenciaHarmonica.setBounds(127, 283, 230, 25);
+		btnPotenciaHarmonica.setBounds(112, 283, 260, 25);
 		btnPotenciaHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FluxoPotenciaHarmonicoUC4 janela = new FluxoPotenciaHarmonicoUC4();
