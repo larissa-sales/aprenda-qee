@@ -1,4 +1,4 @@
-# Aprenda QEE.
+# Aprenda QEE
 
 Esse projeto é uma aplicação em Java criada para auxiliar o ensino da disciplina Qualidade da Energia Elétrica do curso de Engenharia de Energia da Universidade de Brasília.
 
@@ -22,7 +22,7 @@ Importe o projeto para sua Workspace do Eclipse e execute-o clicando com o botã
 
 ### O programa
 
-Na primeira tela, o usuário poderá escolher entre três tipos de simulação:
+Na primeira tela, o usuário poderá escolher entre três tipos de simulações:
 
 * Fluxo de Potência Fundamental
 * Distorção Harmônica
