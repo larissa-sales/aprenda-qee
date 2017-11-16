@@ -69,7 +69,7 @@ public class FluxoPotenciaFundamentalUC2 {
 		frmAprendaQEE.setTitle("Aprenda QEE");
 		frmAprendaQEE.setSize(1024, 700);
 		frmAprendaQEE.setLocationRelativeTo(null);
-		frmAprendaQEE.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmAprendaQEE.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAprendaQEE.getContentPane().setLayout(null);
 		calculosUC2 = new CalculosUC2();
 		
@@ -288,7 +288,9 @@ public class FluxoPotenciaFundamentalUC2 {
 		btnVoltar.setBounds(880, 600, 90, 25);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {						
-				frmAprendaQEE.dispose();			
+				frmAprendaQEE.dispose();				
+				JanelaPrincipalUC1 janela = new JanelaPrincipalUC1();
+				janela.setVisible(true);
 			}
 		});
 		

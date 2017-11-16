@@ -36,37 +36,40 @@ public class JanelaPrincipalUC1 extends JFrame {
 		lblEscolhaUmaSimulao.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblEscolhaUmaSimulao);
 		
-		JButton btnDistorcaoHarmonica = new JButton("Distor\u00E7\u00E3o Harm\u00F4nica");
-		btnDistorcaoHarmonica.setBounds(127, 206, 230, 25);
-		btnDistorcaoHarmonica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DistorcaoHarmonicaUC3 janela = new DistorcaoHarmonicaUC3();
-				janela.NewScreen();
-			}
-		});
-		
 		JButton btnPotenciaFundamental = new JButton("Fluxo de Pot\u00EAncia Fundamental");
 		btnPotenciaFundamental.setBounds(127, 129, 230, 25);
 		btnPotenciaFundamental.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FluxoPotenciaFundamentalUC2 janela = new FluxoPotenciaFundamentalUC2();
 				janela.NewScreen();
+				dispose();
 			}
 		});
 		contentPane.add(btnPotenciaFundamental);
+		
+		
+		JButton btnDistorcaoHarmonica = new JButton("Distor\u00E7\u00E3o Harm\u00F4nica");
+		btnDistorcaoHarmonica.setBounds(127, 206, 230, 25);
+		btnDistorcaoHarmonica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DistorcaoHarmonicaUC3 janela = new DistorcaoHarmonicaUC3();
+				janela.NewScreen();
+				dispose();
+			}
+		});
 		contentPane.add(btnDistorcaoHarmonica);
 		
+	
 		JButton btnPotenciaHarmonica = new JButton("Fluxo de Pot\u00EAncia Harm\u00F4nica");
 		btnPotenciaHarmonica.setBounds(127, 283, 230, 25);
 		btnPotenciaHarmonica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FluxoPotenciaHarmonicoUC4 janela = new FluxoPotenciaHarmonicoUC4();
 				janela.NewScreen();
+				dispose();
 			}
 		});
 		contentPane.add(btnPotenciaHarmonica);
 		
 	}
-	
-
 }
